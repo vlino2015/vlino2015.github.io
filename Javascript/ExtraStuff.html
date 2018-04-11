@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Extra Stuff - DigitalCrafts
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  margin: 20px 0 30px 0;
+}
+
+h1 span.filename {
+  font-family: 'Roboto Mono', monospace;
+  color: #489963;
+  font-size: 75%;
+}
+
+.remark-code, .remark-inline-code {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.remark-code {
+  font-size: 22px;
+  
+}
+
+.remark-slide-content {
+  font-size: 28px;
+  padding: 1em 2em 1em 2em;
+  background-color: #fdfdfd;
+}
+
+
+.spaced li {
+  margin-top: 1rem;
+}
+
+.spaced li li {
+  margin-top: 0.5rem;
+}
+
+.tight li {
+  margin-top: 0.5rem;
+}
+
+.tight li li {
+  margin-top: 0.2rem;
+}
+
+.code18 .remark-code {
+  font-size: 18px;
+}
+
+hr {
+  border: 0;
+  border-bottom: 3px solid #777;
+  margin: 40px 0;
+}
+
+
+.inverse {
+  background-size: 120px 50px;
+  background-position: 97% 3%;
+}
+
+.inverse .remark-code, .inverse .remark-inline-code {
+  color: #489963;
+}
+  
+@media only screen {
+  .inverse {
+    background-color: #272822;
+    color: #eaeaea;
+    text-shadow: 0 0 20px #333;
+  }
+  
+  .inverse h1, .inverse h2 {
+    color: #f3f3f3;
+    line-height: 1.0em;
+  }
+  
+  a, a > code {
+    color: rgb(249, 38, 114);
+    text-decoration: none;
+  }
+}
+
+.wrap_code pre {
+  white-space: pre-wrap;
+}
+
+.small_code .remark-code {
+  font-size: 20px;
+}
+
+.smallest_code .remark-code {
+  font-size: 18px;
+}
+
+.super_smallest_code .remark-code {
+  font-size: 14px;
+}
+
+/* Two-column layout */
+.left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+}
+    .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+
+.left-column2 {
+        color: #edededf6;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+        background-color: #000;
+        padding: 10px;
+        margin-right: 10px;
+       
+}
+    .left-column2 h2:last-of-type, .left-column h3:last-child {
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        
+    }
+.right-column {
+width: 75%;
+float: right;
+vertical-align: top;
+font-family: 'Droid Serif';
+}
+
+.pull-left {
+    float: left;
+    width: 47%;
+}
+.pull-right {
+    float: right;
+    width: 47%;
+}
+.pull-right ~ p {
+    clear: both;
+}
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: spaced
+layout: true
+
+
+---
+
+
+class: inverse, center, middle
+
+#  Extra Stuff ...
+
+### that I forgot to mention yesterday
+
+---
+While statment
+
+---
+
+# Switch Statement
+
+The switch statement evaluates an expression, matching the expression's value to a case clause, and executes statements associated with that case, as well as statements in cases that follow the matching case.
+---
+
+
+```js
+switch (expression) {
+    case value1:
+      //Statements executed when the
+      //result of expression matches value1
+      [break;]
+    case value2:
+      //Statements executed when the
+      //result of expression matches value2
+      [break;]
+    ...
+    case valueN:
+      //Statements executed when the
+      //result of expression matches valueN
+      [break;]
+    [default:
+      //Statements executed when none of
+      //the values match the value of the expression
+      [break;]]
+  }
+
+  ```
+---
+# Using if/else if blocks
+
+```js
+expr = "Papayas";
+if(expr == 'Oranges')
+{
+    console.log('Oranges are $0.59 a pound.');
+}
+else if(expr == 'Mangoes')
+{
+
+}
+else if(expr == 'Papayas')
+{
+    console.log('Mangoes and papayas are $2.79 a pound.');
+    // expected output: "Mangoes and papayas are $2.79 a pound."
+}
+else
+{
+    console.log('Sorry, we are out of ' + expr + '.');
+}
+
+```
+---
+# Using switch
+
+```js
+var expr = 'Papayas';
+switch (expr) {
+  case 'Oranges':
+    console.log('Oranges are $0.59 a pound.');
+    break;
+  case 'Mangoes':
+  case 'Papayas':
+    console.log('Mangoes and papayas are $2.79 a pound.');
+    // expected output: "Mangoes and papayas are $2.79 a pound."
+    break;
+  default:
+    console.log('Sorry, we are out of ' + expr + '.');
+}
+```
+
+
+---
+# foreach
+
+### The forEach() method executes a provided function once for each array element.
+
+```js
+var array1 = ['a', 'b', 'c'];
+
+array1.forEach(function(element) {
+  console.log(element);
+});
+
+// expected output: "a"
+// expected output: "b"
+// expected output: "c"
+
+```
+
+[MDN list of array](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+---
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        highlightStyle: 'zenburn',
+        highlightLanguage: 'text',
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>

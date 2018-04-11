@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      CSS/HTMl 102 - DigitalCrafts
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  margin: 20px 0 30px 0;
+}
+
+h1 span.filename {
+  font-family: 'Roboto Mono', monospace;
+  color: #489963;
+  font-size: 75%;
+}
+
+.remark-code, .remark-inline-code {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.remark-code {
+  font-size: 22px;
+  
+}
+
+.remark-slide-content {
+  font-size: 28px;
+  padding: 1em 2em 1em 2em;
+  background-color: #fdfdfd;
+}
+
+
+.spaced li {
+  margin-top: 1rem;
+}
+
+.spaced li li {
+  margin-top: 0.5rem;
+}
+
+.tight li {
+  margin-top: 0.5rem;
+}
+
+.tight li li {
+  margin-top: 0.2rem;
+}
+
+.code18 .remark-code {
+  font-size: 18px;
+}
+
+hr {
+  border: 0;
+  border-bottom: 3px solid #777;
+  margin: 40px 0;
+}
+
+
+.inverse {
+  background-size: 120px 50px;
+  background-position: 97% 3%;
+}
+
+.inverse .remark-code, .inverse .remark-inline-code {
+  color: #489963;
+}
+  
+@media only screen {
+  .inverse {
+    background-color: #272822;
+    color: #eaeaea;
+    text-shadow: 0 0 20px #333;
+  }
+  
+  .inverse h1, .inverse h2 {
+    color: #f3f3f3;
+    line-height: 1.0em;
+  }
+  
+  a, a > code {
+    color: rgb(249, 38, 114);
+    text-decoration: none;
+  }
+}
+
+.wrap_code pre {
+  white-space: pre-wrap;
+}
+
+.small_code .remark-code {
+  font-size: 20px;
+}
+
+.smallest_code .remark-code {
+  font-size: 18px;
+}
+
+.super_smallest_code .remark-code {
+  font-size: 14px;
+}
+
+/* Two-column layout */
+.left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+}
+    .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+
+.left-column2 {
+        color: #edededf6;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+        background-color: #000;
+        padding: 10px;
+        margin-right: 10px;
+       
+}
+    .left-column2 h2:last-of-type, .left-column h3:last-child {
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        
+    }
+.right-column {
+width: 75%;
+float: right;
+vertical-align: top;
+font-family: 'Droid Serif';
+}
+
+.pull-left {
+    float: left;
+    width: 47%;
+}
+.pull-right {
+    float: right;
+    width: 47%;
+}
+.pull-right ~ p {
+    clear: both;
+}
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: spaced
+layout: true
+
+---
+class: inverse, center, middle
+
+ #Positioning, Flots, Flex Box, Tools
+
+---
+
+##Position properties
+
+```css
+position: static|absolute|fixed|relative|sticky|initial|inherit;
+```
+- __static__ Default value. Elements render in order, as they appear in the document flow]
+- __absolute__ The element is positioned relative to its first positioned (not static) ancestor element]
+- __fixed__ The element is positioned relative to the browser window]
+- __relative__ The element is positioned relative to its normal position, so "left:20px" adds 20 pixels to the element's LEFT position]
+- __sticky__ no IE Support,The element is positioned based on the user's scroll position
+
+---
+ #Floating Images
+
+ ```html 
+ <div>
+    <img src="..." alt="...">
+    some content ...
+    <img src="..." alt="...">
+    some more content ...
+  </div>
+  ```
+---
+
+  #The Clearfix Hack
+
+  ```html
+  <div>
+      <h2>First Awesome Topic</h2>
+      <img src="..." alt="...">
+      some content ...
+    </div>
+    <div>
+      <h2>Second Awesome Topic</h2>
+      <img src="..." alt="...">
+      some more content ...
+    </div>
+    ```
+
+---
+#Flex Box
+- ease of use, simplied HTML
+- vertical centering is possible
+- can have real colums that stay the same height and are responsive
+---
+#Basic Terminology
+-container
+-items
+
+---
+
+#Usage 
+
+- display: flex or display: flex-inline (parent container property)
+- flex-direction: row, column (child properties)
+- flex-wrap: wrap, no-wrap
+- justify-content: flex-start, center, flex-end, space-between, space-around
+- align-items: stretch, flex-start, center, flex-end, baseline
+- align-content: flex-start, center, flex-end, space-between, space-around
+
+---
+
+#Display 
+
+```css
+.container {
+  display: flex; /* or inline-flex */
+  flex-direction: row | row-reverse | column | column-reverse;
+  flex-wrap: nowrap | wrap | wrap-reverse;
+  
+}
+```
+
+```css 
+.item {
+  order: <integer>; /* default is 0 */
+  flex-grow: <number>; /* default 0 */
+  flex-shrink: <number>; /* default 1 */
+}
+```
+
+---
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        highlightStyle: 'zenburn',
+        highlightLanguage: 'text',
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>

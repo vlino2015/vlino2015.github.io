@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      AJAX and APIs
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  margin: 20px 0 30px 0;
+}
+h1 span.filename {
+  font-family: 'Roboto Mono', monospace;
+  color: #489963;
+  font-size: 75%;
+}
+.remark-code, .remark-inline-code {
+  font-family: 'Roboto Mono', monospace;
+}
+.remark-code {
+  font-size: 22px;
+  
+}
+.remark-slide-content {
+  font-size: 28px;
+  padding: 1em 2em 1em 2em;
+  background-color: #fdfdfd;
+}
+.spaced li {
+  margin-top: 1rem;
+}
+.spaced li li {
+  margin-top: 0.5rem;
+}
+.tight li {
+  margin-top: 0.5rem;
+}
+.tight li li {
+  margin-top: 0.2rem;
+}
+.code18 .remark-code {
+  font-size: 18px;
+}
+hr {
+  border: 0;
+  border-bottom: 3px solid #777;
+  margin: 40px 0;
+}
+.inverse {
+  background-size: 120px 50px;
+  background-position: 97% 3%;
+}
+.inverse .remark-code, .inverse .remark-inline-code {
+  color: #489963;
+}
+  
+@media only screen {
+  .inverse {
+    background-color: #272822;
+    color: #eaeaea;
+    text-shadow: 0 0 20px #333;
+  }
+  
+  .inverse h1, .inverse h2 {
+    color: #f3f3f3;
+    line-height: 1.0em;
+  }
+  
+  a, a > code {
+    color: rgb(249, 38, 114);
+    text-decoration: none;
+  }
+}
+.wrap_code pre {
+  white-space: pre-wrap;
+}
+.small_code .remark-code {
+  font-size: 20px;
+}
+.smallest_code .remark-code {
+  font-size: 18px;
+}
+.super_smallest_code .remark-code {
+  font-size: 14px;
+}
+/* Two-column layout */
+.left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+}
+    .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+.left-column2 {
+        color: #edededf6;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+        background-color: #000;
+        padding: 10px;
+        margin-right: 10px;
+       
+}
+    .left-column2 h2:last-of-type, .left-column h3:last-child {
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        
+    }
+.right-column {
+width: 75%;
+float: right;
+vertical-align: top;
+font-family: 'Droid Serif';
+}
+.pull-left {
+    float: left;
+    width: 47%;
+}
+.pull-right {
+    float: right;
+    width: 47%;
+}
+.pull-right ~ p {
+    clear: both;
+}
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: spaced
+layout: true
+
+
+---
+
+
+class: inverse, center, middle
+
+#  AJAX & APIs
+
+---
+
+class: inverse, center, middle
+
+# Install Node
+
+---
+# Install Node
+
+[Installing Node](https://nodejs.org/en/download/)
+
+To test that you've got Node.js correctly installed on your computer, open a new terminal and type node --help and you should see the usage documentation.
+---
+# set up a server
+
+http-serer -p 3000
+localhost:3000 
+
+Alternatively, install the Live Server plugin
+
+---
+
+
+# Understanding XMLHttpRequest and AJAX
+
+In the early days of the World Wide Web 
+
+- Requesting data from a server and displaying it on the open web page required reloading the page in the browser. 
+- This happened even if part or most of the page was staying the same. 
+- To optimize this experience, the XMLHttpRequest object was created. 
+- This object is often referred to as the XHR object for short. 
+
+
+---
+
+# Methods of XHR
+
+- You create an XHR object to open a request to a remote URL using an HTTP method, such as Get.
+
+- use the send() method. 
+- Once a request has been sent, the value of the readyState property indicates the current state of the request, using a number from 0 to 4. 
+- The XHR object also specifies a readystatechange Event.
+
+XHR code commonly listens for this event to fire and then uses a conditional to check if this state is 4, 
+indicating that the request is complete. In this case, code to work with the response is called. 
+
+
+---
+
+# Method of XHR Object
+
+- Open()
+  - specifty HTTP Verbs
+  - specify tartet URL
+
+- send ()
+
+---
+
+# Ready Statue Property value
+
+indicates value of request
+
+- 0 - Request no yet initialized
+- 1 - Request set up
+- 2 - Request sent
+- 3 - Request in process
+- 4 - Reuqest complete
+
+---
+
+#Ajax code in libraries are built on top of XHR
+
+- jQuery
+- React
+- Angular
+
+includes convience methods that make XHR calls convenient
+
+---
+# Node
+
+- can't import jQuery into Node (meant to work with document)
+- Going to use Fetch or Axios instesd of JQuery
+-- built on promises just like jQuery
+-- promises allow you to chain functions instead of nexted callbacks
+-- nested callbacks referred to as callback hell.
+
+---
+
+# project
+
+- request weather information for that location
+- we'll pull the temperature and conditions out of the Json we receive. 
+- Then we'll convert the temperature to Fahrenheit and to Celsius
+- add those values to the dom, above the fold.
+
+---
+
+# Get API Key for Weather Map
+
+
+- [OpenWeatherMap.org](http://openweathermap.org/)
+- Click on API at the top of the page
+- Go to weathermap.org 
+- click on API link at top of page
+- Inside of API documentation click __API Key__
+- Click __Sign up__
+- Click __API key__ in the tool bar
+
+
+
+
+
+
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        highlightStyle: 'zenburn',
+        highlightLanguage: 'text',
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>

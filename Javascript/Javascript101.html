@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Javascript 101 a
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  margin: 20px 0 30px 0;
+}
+
+h1 span.filename {
+  font-family: 'Roboto Mono', monospace;
+  color: #489963;
+  font-size: 75%;
+}
+
+.remark-code, .remark-inline-code {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.remark-code {
+  font-size: 22px;
+  
+}
+
+.remark-slide-content {
+  font-size: 28px;
+  padding: 1em 2em 1em 2em;
+  background-color: #fdfdfd;
+}
+
+
+.spaced li {
+  margin-top: 1rem;
+}
+
+.spaced li li {
+  margin-top: 0.5rem;
+}
+
+.tight li {
+  margin-top: 0.5rem;
+}
+
+.tight li li {
+  margin-top: 0.2rem;
+}
+
+.code18 .remark-code {
+  font-size: 18px;
+}
+
+hr {
+  border: 0;
+  border-bottom: 3px solid #777;
+  margin: 40px 0;
+}
+
+
+.inverse {
+  background-size: 120px 50px;
+  background-position: 97% 3%;
+}
+
+.inverse .remark-code, .inverse .remark-inline-code {
+  color: #489963;
+}
+  
+@media only screen {
+  .inverse {
+    background-color: #272822;
+    color: #eaeaea;
+    text-shadow: 0 0 20px #333;
+  }
+  
+  .inverse h1, .inverse h2 {
+    color: #f3f3f3;
+    line-height: 1.0em;
+  }
+  
+  a, a > code {
+    color: rgb(249, 38, 114);
+    text-decoration: none;
+  }
+}
+
+.wrap_code pre {
+  white-space: pre-wrap;
+}
+
+.small_code .remark-code {
+  font-size: 20px;
+}
+
+.smallest_code .remark-code {
+  font-size: 18px;
+}
+
+.super_smallest_code .remark-code {
+  font-size: 14px;
+}
+
+/* Two-column layout */
+.left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+}
+    .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+
+.left-column2 {
+        color: #edededf6;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+        background-color: #000;
+        padding: 10px;
+        margin-right: 10px;
+       
+}
+    .left-column2 h2:last-of-type, .left-column h3:last-child {
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        
+    }
+.right-column {
+width: 75%;
+float: right;
+vertical-align: top;
+font-family: 'Droid Serif';
+}
+
+.pull-left {
+    float: left;
+    width: 47%;
+}
+.pull-right {
+    float: right;
+    width: 47%;
+}
+.pull-right ~ p {
+    clear: both;
+}
+
+img{
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: spaced
+layout: true
+
+
+---
+
+
+class: inverse, center, middle
+
+#  Javascript
+
+### finally.
+
+<div >
+<img width="300px"  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png">
+</div>
+
+---
+
+# What is Javascript?
+
+### JavaScript (JS) is a lightweight interpreted or JIT-compiled programming language with first-class functions, and is best known as a scripting language for Web Pages, but is used in many non-browswer environments as well.
+
+[Mozilla Development Network](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+    
+---
+
+# Introductions
+
+.pull-left[
+- Netscape decides HTML needs to be interactive
+- 1995, Netscape creates Mocha
+- Renamed to Javascript
+- Microsoft creates JScript
+- 1997, Javascript becomes ECMA standard
+- Javascript takes over!
+]
+
+.pull-right[
+
+    <div>
+        <img width="200px"  src="http://www.andrewturnbull.net/mozilla/ns404.png">
+    </div>
+]
+
+---
+
+class: inverse, center, middle
+
+# Running Javascript
+
+---
+# Chrome Dev Tools
+
+<div class="center">
+<img width="700px" src="Images/hello-dev-tools.png">
+</div>
+
+
+---
+
+# Where can do I run javascript?
+
+- Browser console
+- Inside your html page
+- Inside of an external javascript file.
+---
+
+## Create a new project
+
+```sh
+mkdir JavaScript101
+cd JavaScript101
+touch index.html
+mkdir scripts
+touch scripts/main.js
+```
+
+---
+
+## Create an HTML skeleton in index.html
+
+```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    </head>
+    <body>
+    *  <script src="scripts/main.js"></script>
+    </body>
+    </html>
+```
+
+*With a script tag!*
+
+---
+
+# Writing javascript directly to your html page
+
+```html
+<script>
+    document.body.innerHTML = "Hello World!";
+</script>
+```
+
+- load to head tag
+- load to body tag
+- async- The script is exectued asynchronously with the rest of the page
+- defer="defer": the script is executed when the page has finished parsing
+- if neither async or defer is present: The script is fetched and executed immediately, before the browser continues parsing the page.
+
+
+
+---
+
+```js
+console.log('Hello World!');
+```
+
+## Open index.html in Chrome
+
+```sh
+open index.html
+```
+
+*Or just double click the file index.html*
+
+## Add 'Hello World' to main.js
+---
+
+class: inverse, center, middle
+
+# Javascript is similar to Python, but it's not the same!
+### Comparison overview
+### **Most** things you learned in Python can be applied in Javascript.
+
+<table>
+<tr>
+<td width="50%">
+<img width="350px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Python.svg/2000px-Python.svg.png" width="100%">
+</td>
+<td width="50%">
+<img width="270px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/480px-Unofficial_JavaScript_logo_2.svg.png">
+</td>
+
+</tr>
+</table>
+
+---
+
+
+<table border="1|1">
+    <tr>
+        <th>Python</th>
+        <th>Javascript</th>
+    </tr>
+    <tr>
+        <td width="50%">
+        Lives in OS
+        </td>
+        <td width="50%">
+        Lives in a host (like your browser)
+        </td>
+
+    </tr>
+    <tr>
+        <td width="50%">
+        Lines terminate with newline character
+        </td>
+        <td width="50%">
+        Lines terminate with a semicolon
+        </td>
+    
+    </tr>
+
+    <tr>
+        <td width="50%">
+        "print" print to your terminal
+        </td>
+        <td width="50%">
+        "console.log()" will print to your console
+        </td>
+    
+    </tr>
+
+    <tr>
+        <td width="50%">
+        Variables must be defined with initial value
+        </td>
+        <td width="50%">
+        Variables can be defined without a value
+        </td>
+        
+    </tr>
+    <tr>
+        <td width="50%">
+        Code blocks denoted byindentation
+        </td>
+        <td width="50%">
+        Code blocks denoted by {}
+        </td>
+    
+    </tr>
+
+    <tr>
+        <td width="50%">
+        list
+        </td>
+        <td width="50%">
+        array
+        </td>
+            
+    </tr>
+
+    <tr>
+        <td width="50%">
+        dict
+        </td>
+        <td width="50%">
+        object
+        </td>
+        
+    </tr>
+</table>
+---
+# Printing
+
+.pull-left[
+
+Python
+```python
+print 'Hello World'
+```
+]
+.pull-right[
+
+Javascript
+```javascript
+console.log('Hello World');
+```
+]
+---
+
+# Printing
+.pull-left[
+Python
+```python
+"Hello!"
+'Hello!'
+"""Hello
+There!
+"""
+```
+]
+.pull-right[
+Javascript
+```javascript
+"Hello!"
+'Hello!'
+`Hello
+There!
+`
+```
+]
+
+JS also has three kinds of quotes
+  - but instead of triple quotes, it has backticks
+  - that's the key below the `esc`
+  - escaping is the same
+
+---
+
+
+# Concatenation is the same
+.pull-left[
+
+Python
+```python
+"Hello" + " " + "There"
+```
+]
+.pull-right[
+
+Javascript
+```javascript
+"Hello" + " " + "There"
+```
+]
+ 
+still uses the `+` operator
+---
+## Variables
+
+- JS *needs* the `var` keyword
+- otherwise, bad things happen...
+  - a global variable is created, even from inside a function
+
+## Variable names
+
+  - can start with a-z, A-Z, _, $ (yes, dollar)
+  - after first letter, 0-9, a-z, A-Z, _, $
+  - can't use [reserved words](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#Keywords)
+
+---
+# Use camelCase, not snake_case
+
+```js
+var veryLongVariableName = "";
+// Yes!
+
+var very_long_variable_name = "";
+// Nope.
+
+```
+
+---
+# String length
+
+- No `len` function
+- Uses the `.length` property
+
+```js
+var hey = "Hello There";
+hey.length
+// 11
+```
+
+---
+class: inverse, center, middle
+
+#  It's all in the details.
+### Javascript...
+
+---
+
+#Variables 
+- Variables are declared with the keyward "var"
+- Varialbes are like labels - they point to any kind of value
+- Variables are initialized with "="
+
+```js
+
+var undefined; //Undefined
+
+var number = 4;
+
+var float = 4.1;
+
+var string = "hello world";
+```
+---
+
+# Numbers
+
+- Javascript numbers can be written with or without a decimal point
+- Numbers with decimal points are called floats
+
+```js
+var number = 4;
+var float = 4.1;
+```
+---
+
+# Strings
+- Strings are a literal type used to define test
+- Unlike Python, there is no concept of a "character"
+- A single character is just a string with one character;
+- A string literal is denoted by "" or ''
+
+```js
+var emptyString = "";
+var string = 'This is a string';
+var string = "a";
+```
+---
+ # String Operators
+ - \+ will concatenate two strings (ora string and a non-string)
+ - .length will return the number of characters in the string
+ - .indexOf(sub) will return the index of the substring
+
+ ```js
+var concat = "hello" + "world"; //helloworld
+var concat2 = 4 + "world"; //4world
+var length = concat2.length; //6
+var indexWorld = concat.indexOf('world'); //5
+ ```
+---
+# Boolean Operators
+- ! will return the opposite of the boolean
+- && will apply "and" to two boolean values
+- || will apply "or" to two boolean values
+- == will check for equality between two values
+
+```js
+var boolean = true;
+var not = !boolean; //false
+var and = boolean && false; //false
+var or = boolean || false; // true;
+var equals = true == false; //true;
+
+```
+---
+
+# if Statements
+
+```js
+if (age >= 21) {
+    console.log("You get free beer");
+  }
+```
+
+---
+# if - else Statements
+
+```js
+if (age >= 21) {
+  console.log("You get free beer");
+} else {
+  console.log("Sorry no beer for you");
+}
+```
+
+---
+# if - else if - else Statements
+
+```js
+if (age >= 21) {
+  console.log("You get free beer");
+} else if (age < 18) {
+  console.log("What are you even doing here?");
+} else {
+  console.log("Sorry no beer for you");
+}
+```
+---
+
+class: inverse, center, middle
+
+#  Loops
+
+---
+
+# The good ol' while loop
+
+```js
+var count = 0;
+while (count < 10){
+
+    count = count + 1;
+    console.log(count);
+    
+}
+```
+---
+
+# The good ol' while loop, with post-increment
+
+```js
+
+var count = 0;
+while (count < 10) {
+    console.log(count);
+    //count = count + 1;
+    count++;
+}
+```
+---
+
+# The for loop 
+
+```js
+
+for (var count=0; count < 10; count ++)
+{
+    console.log(count);
+}
+```
+
+---
+
+class: inverse, center, middle
+# Collections
+
+---
+
+class: inverse, center, middle
+# Arrays
+---
+
+# A variable assigned to an empty array
+
+```js
+var lottoNums = [];
+```
+
+---
+
+#  Adding values to an array
+
+```js
+ var lottoNums = [];
+ lottoNums.push(23);
+ lottoNums.push(11);
+ lottoNums.push(43);
+ lottoNums.push(19);
+ lottoNums.push(37);
+ lottoNums.push(16);
+```
+
+```js
+console.log(lottoNums);
+// [23, 11, 43, 19, 37, 16]
+```
+
+---
+
+# a variable assigned to an array of numbers
+
+```js
+var lottoNums = [23, 11, 43, 19, 37, 16];
+```
+
+---
+
+# Accessing an element in an array
+
+```js
+
+var lottoNums = [23, 11, 43, 19, 37, 16];
+console.log(lottoNums[0]); //23
+
+console.log(lottoNums[3]); //19
+```
+
+## No error here:
+
+```js
+console.log9lottoNums[300000];
+//undefined
+```
+
+---
+
+# Reassigning an element in an array 
+
+```js
+var lottoNums = [23, 11, 43, 19, 37, 16];
+lottoNums[0] = 100;
+console.log(lottoNums[0]);
+
+```
+
+---
+
+# Removing an element form the end of an array
+
+```js
+var lottoNums = [23, 11, 43, 19, 37, 16];
+lottoNums.pop(); //removes *and* returns 16
+
+var thePoppedNumber = lottoNums.pop();
+console.log(thePoppedNumber); //37;
+```
+
+---
+
+# Removing an element from the end beginning an array
+
+```js
+var lottoNums = [23, 11, 43, 19, 37, 16];
+var theShiftedNumber = lottoNums.shift();
+console.log(theShiftedNumber); // 23
+
+```
+
+---
+
+# Removing an element from the middle of an array 
+
+
+```js
+
+var lottoNums = [23, 11, 43, 19, 37 16];
+var arrayOfSplicedValues = lottoNums.splice(2, 1);
+console.log(arrayOfSplicedValues);
+```
+
+### Multiple values
+```js
+var lottoNums = [23, 11, 43, 19, 37, 16];
+var arrayOfSplicedValues = lottoNums.splice(2, 3);
+console.log(arrayOfSplicedValues); //[43, 19, 47]
+```
+
+---
+
+# Converting a string to an array of words
+
+```js
+var words = 'oh hey how is it going'.split('');
+console.log(words);
+// ["oh", "hey", "how", "is", "it", "going"]
+
+```
+
+---
+
+# Looping through an array
+
+```js
+var words = 'oh hey how is it going'.split(' ');
+for(var i = 0; i<words.length; i++)
+{
+    console.log(words[i]);
+}
+
+```
+
+---
+
+# Putting an array together into a string
+
+```js
+var words = 'oh hey how is it going'.split(' ');
+for(var i = 0; i<words.length; i++)
+{
+    console.log(words[i]);
+}
+
+```
+
+```js
+console.log(words.join(' '));
+//'oh hey how is it going'
+```
+
+---
+class: inverse, center, middle
+
+# Objects
+---
+
+# JS Objects: like a python dictionary, only different
+
+```js
+var characterSheet = {
+    name: 'tim berners-lee',
+    title: 'sir',
+    powers: 'invent the web'
+}
+
+```
+
+---
+
+# Adding a property to an object
+
+```js
+var characterSheet = {};
+characterSheet['name'] = 'tim berners-lee';
+characterSheet['title'] = 'sir';
+characterSheet['powers'] = 'invent the web';
+
+```
+
+---
+
+# Deleting properties from an object 
+
+```js
+var characterSheet = {};
+characterSheet['name'] = 'tim berners-lee';
+characterSheet['title'] = 'sir';
+characterSheet['powers'] = 'invent the web';
+
+
+```
+
+```js
+del characterSheet['title'];
+```
+
+---
+
+# Dynamic key names
+
+```js
+var characterSheet = {
+    name: 'tim' berners-lee,
+    title: 'sir',
+    powers: 'invent the web'
+};
+
+
+```
+
+```js
+var key = 'name';
+console.log(characterSheet[key]);
+```
+
+---
+
+# Dynamic key names in an array
+
+```js
+var characterSheet = {
+    name: 'tim' berners-lee,
+    title: 'sir',
+    powers: 'invent the web'
+};
+
+
+```
+
+```js
+var keys = ['name', 'title', 'powers'];
+for (var i=0; i<keys.length; i++){
+    var keyName = keys[i];
+    console.log(characterSheet[keyName]);
+}
+```
+
+---
+
+# Dynamic key names in an array, alternative 
+
+```js
+var characterSheet = {
+    name: 'tim' berners-lee,
+    title: 'sir',
+    powers: 'invent the web'
+};
+
+```
+
+```js
+var keys = ['name', 'title', 'powers'];
+for (var i = 0; i< keys.length; i++){
+    // var keyName = keys[i];
+    //console.log(characterSheet[keyName]);
+    console.log(characterSheet[keys[i]]);
+}
+```
+
+---
+
+# Obtaining the keys programmatically
+
+```js
+var characterSheet = {
+    name: 'tim berners-lee',
+    title: 'sir',
+    powers: 'invernt the word'
+};
+
+```
+
+```js
+var keyNameList = Object.keys(characterSheet);
+for (var i= 0; i<keyNameList.length; i++){
+
+    console.log(characterSheet[keyNameList[i]]);
+}
+```
+---
+
+class: inverse, center, middle
+# Functions
+---
+# Functions
+
+function hello (name) {
+    var output = 'Hello ' + name;
+    console.log(output);
+    return output;
+  }
+
+---
+class: inverse, center, middle
+# Finito!
+### for now...
+
+
+
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        highlightStyle: 'zenburn',
+        highlightLanguage: 'text',
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      AWS Deployment
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  margin: 20px 0 30px 0;
+}
+h1 span.filename {
+  font-family: 'Roboto Mono', monospace;
+  color: #489963;
+  font-size: 75%;
+}
+.remark-code, .remark-inline-code {
+  font-family: 'Roboto Mono', monospace;
+}
+.remark-code {
+  font-size: 22px;
+  
+}
+.remark-slide-content {
+  font-size: 28px;
+  padding: 1em 2em 1em 2em;
+  background-color: #fdfdfd;
+}
+.spaced li {
+  margin-top: 1rem;
+}
+.spaced li li {
+  margin-top: 0.5rem;
+}
+.tight li {
+  margin-top: 0.5rem;
+}
+.tight li li {
+  margin-top: 0.2rem;
+}
+.code18 .remark-code {
+  font-size: 18px;
+}
+hr {
+  border: 0;
+  border-bottom: 3px solid #777;
+  margin: 40px 0;
+}
+.inverse {
+  background-size: 120px 50px;
+  background-position: 97% 3%;
+}
+.inverse .remark-code, .inverse .remark-inline-code {
+  color: #489963;
+}
+  
+@media only screen {
+  .inverse {
+    background-color: #272822;
+    color: #eaeaea;
+    text-shadow: 0 0 20px #333;
+  }
+  
+  .inverse h1, .inverse h2 {
+    color: #f3f3f3;
+    line-height: 1.0em;
+  }
+  
+  a, a > code {
+    color: rgb(249, 38, 114);
+    text-decoration: none;
+  }
+}
+.wrap_code pre {
+  white-space: pre-wrap;
+}
+.small_code .remark-code {
+  font-size: 20px;
+}
+.smallest_code .remark-code {
+  font-size: 18px;
+}
+.super_smallest_code .remark-code {
+  font-size: 14px;
+}
+
+.imgs{
+    /* margin-left:auto; margin-right:auto; position:relative; */
+    display:block;
+    text-align: center;
+}
+
+.leftJustify{
+    width: 100%;
+    text-align: left;
+}
+/* Two-column layout */
+.left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+}
+    .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+.left-column2 {
+        color: #edededf6;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+        background-color: #000;
+        padding: 10px;
+        margin-right: 10px;
+       
+}
+    .left-column2 h2:last-of-type, .left-column h3:last-child {
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        
+    }
+.right-column {
+width: 75%;
+float: right;
+vertical-align: top;
+font-family: 'Droid Serif';
+}
+.pull-left {
+    float: left;
+    width: 47%;
+}
+.pull-right {
+    float: right;
+    width: 47%;
+}
+.pull-right ~ p {
+    clear: both;
+}
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: spaced
+layout: true
+
+---
+
+class: inverse, center, middle
+
+#  AWS
+
+### Deploying Your Dynamic Code
+
+
+---
+class: inverse
+## How we're going to do this
+
+---
+class: center
+## Create a new account on Amazon Web Services
+### Navigate to [Amazon Web Serives](https://aws.amazon.com/)
+
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws1.png">
+</div>
+
+
+---
+class: center
+# Fill out form to complete sign up.
+
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws2.png">
+</div>
+
+---
+class: center
+# Fill out form to complete sign up.
+
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws3.png">
+</div>
+
+---
+
+class: center
+# Enter your payment information
+### boo!
+
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws4.png">
+</div>
+
+---
+class: center
+# Select a plan - Basic Plan
+### Free, of course.  Free is good.
+
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws5.png">
+</div>
+
+---
+class: center
+# So many options - wayyyy too complicated.
+### Click on "Launch a virtual machine"
+
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws6.png">
+</div>
+
+
+---
+class: center
+# Choose an Amazon Machine Image.
+### 1. Click on Ubuntu Server
+### 2. Launch the instance of your database 
+
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws9.png">
+</div>
+
+
+---
+
+class: inverse, center, middle
+
+#  Just Keep clicking
+## then click "launch" 
+### if all goes well, then you should be ...
+
+---
+
+class: center
+# Here. 
+
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws11.png">
+</div>
+
+
+---
+# Now that you're done clicking ...
+
+- Click on Launch on the __Review Instance Launch Page__
+- There should be a pop-up windows 
+- __Select an existing key pair or create a new key pair__
+- Enter a Key Pair Name (this file has your key pair)
+- Download Key Pair (will download file to your page)
+- __Launch Instance__
+
+---
+class: center
+# Here.
+### Click on __View Instance__ button at the bottom of the page
+
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws12.png">
+</div>
+
+---
+class: center
+# Click on __Connect__ to connect to your server
+
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws13.png">
+</div>
+
+---
+class: center
+# Before connecting to your server...
+### ...you have to go into your terminal window and do some stuff.  Yay, for more steps!
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws14.png">
+</div>
+
+---
+class: center
+# Look at your pop-up window
+
+### Follow the instructions on the screen ... almost forgot ... Open your terminal window and navigate to the top of your directory __cd ~__
+
+```bash 
+chmod 400 YourFileName.pem
+```
+Connect to your instance using the Public DNS in your pop-up window
+```bash 
+ec2-18-188-33-191.us-east-2.compute.amazonaws.com
+```
+
+example
+
+```bash
+ssh -i YourFileName.pem" ubuntu@ec2-18-188-33-191.us-east-2.compute.amazonaws.com
+```
+
+---
+class: center
+# Question in your terminal...
+### Are you sure you want to contintue connecting [yes/no]?  Ummm... __yes__. 
+### you have to spell it out completely __y-e-s__
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws17.png">
+</div>
+
+---
+class: center
+# You are now connected to your Ubuntu server on AWS
+### After all of those steps, there should be fireworks.
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws18.png">
+</div>
+
+---
+class: center
+# More Steps
+```bash 
+ apt-get update  or sudo apt-get update
+```
+
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws19.png">
+</div>
+
+---
+class: center
+# Here.
+```bash 
+ apt-get install  or sudo apt-get install
+```
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws20.png">
+</div>
+
+
+---
+class: center
+# Here.
+```bash 
+ sudo reboot
+```
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws22.png">
+</div>
+
+---
+- Close down you terminal and restart it.
+- Look through your history and run this command again
+
+```bash
+ssh -i YourFileName.pem" ubuntu@ec2-18-188-33-191.us-east-2.compute.amazonaws.com
+```
+
+### You should now be connected to your server ... __again__
+
+---
+
+
+class: center
+
+# Installing Node on your Ubunto Server
+
+```bash
+apt-sudo apt-get install nodejs
+```
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws24.png">
+</div>
+
+---
+class: center
+# Installing PostgreSQL on your Ubunto Server
+
+### Commands are on the next page. There were too many of them.
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws25.png">
+</div>
+
+---
+# Installing PostgreSQL on your Ubunto Server
+Access root by running the following command:
+```bash
+sudo su -
+```
+Install PostgreSQL
+```bash
+apt-get install postgresql postgresql-contrib
+```
+
+Configure PostgreSQL to start up upon server boot.
+```bash
+update-rc.d postgresql enable
+```
+
+---
+Start PostgreSQL
+```bash
+service postgresql start
+```
+
+Log into the postgres user:
+```bash
+su - postgres
+```
+
+This will bring you to a new prompt. Log into the database by typing:
+```psql
+psql
+```
+
+To quit
+```psql
+\q
+```
+
+---
+
+# Git good
+
+- You will __git clone__ your code to your AWS EC2 server
+- To get updates: git pull origin master
+- If needed: git push origin master
+---
+
+class: inverse
+# But first... the SSH keys
+
+---
+# Generate ssh Keys on AWS
+
+```bash
+ssh-keygen -t rsa -b 4096 -C "your_github_email@example.com"
+```
+
+Then output the __public__ key to the screen and copy into
+
+```bash
+cat ~/.ssh/id_rsa.pub
+
+```
+---
+# Paste the public key as a new key in github.com
+
+- go to github.com 
+- click on your picture icon on the upper right corner of the page
+- select settings
+- select SSH and GPG keys
+- select __New SSH Key__
+- Enter a title 
+- Paste your __public__ keys
+- Click Add SSH button
+
+---
+# Now you can clone your project
+
+```git 
+git init 
+```
+
+```git 
+git clone <the clone URL of your project>
+```
+And pull/push changes
+```git 
+git pull origin master
+git push origin master 
+```
+
+---
+# pm2 
+
+- a program that manages Node.js programs
+- can run when the server (re)boots
+
+---
+# Install pm2 globally
+### Do this once per server
+
+```bash 
+npm install -g pm2
+```
+---
+# Starting an app
+### Do this once per app
+
+```bash 
+cd your-project-name 
+pm2 start bin/www
+```
+
+Replace bin/www with the name of your main.js file
+---
+View the list of running apps
+
+```bash 
+pm2 list
+```
+
+Stop an app
+```bash 
+
+pm2 stop app-name
+```
+the app-name is the one shown in pm2 list
+
+---
+Delete an app
+```bash 
+
+pm2 delete app-name
+```
+Reloading an app
+```bash 
+
+pm2 resart app-name
+```
+---
+
+Viewing the process manager
+```bash 
+
+pm2 monit
+```
+
+---
+
+---
+
+class: center
+# Amazon Route 53
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/aws30.png">
+</div>
+
+---
+# Static Webhosting on AWS 
+
+- Sign in to the AWS Management Console and open the Amazon S3 console at https://console.aws.amazon.com/s3/.
+- Follow instructions here:  [AWS Static Web hosting](https://docs.aws.amazon.com/AmazonS3/latest/dev/website-hosting-custom-domain-walkthrough.html)
+---
+
+
+
+
+
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        highlightStyle: 'zenburn',
+        highlightLanguage: 'text',
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>

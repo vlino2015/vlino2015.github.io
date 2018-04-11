@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      DOM Programming
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  margin: 20px 0 30px 0;
+}
+
+h1 span.filename {
+  font-family: 'Roboto Mono', monospace;
+  color: #489963;
+  font-size: 75%;
+}
+
+.remark-code, .remark-inline-code {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.remark-code {
+  font-size: 22px;
+  
+}
+
+.remark-slide-content {
+  font-size: 28px;
+  padding: 1em 2em 1em 2em;
+  background-color: #fdfdfd;
+}
+
+
+.spaced li {
+  margin-top: 1rem;
+}
+
+.spaced li li {
+  margin-top: 0.5rem;
+}
+
+.tight li {
+  margin-top: 0.5rem;
+}
+
+.tight li li {
+  margin-top: 0.2rem;
+}
+
+.code18 .remark-code {
+  font-size: 18px;
+}
+
+hr {
+  border: 0;
+  border-bottom: 3px solid #777;
+  margin: 40px 0;
+}
+
+
+.inverse {
+  background-size: 120px 50px;
+  background-position: 97% 3%;
+}
+
+.inverse .remark-code, .inverse .remark-inline-code {
+  color: #489963;
+}
+  
+@media only screen {
+  .inverse {
+    background-color: #272822;
+    color: #eaeaea;
+    text-shadow: 0 0 20px #333;
+  }
+  
+  .inverse h1, .inverse h2 {
+    color: #f3f3f3;
+    line-height: 1.0em;
+  }
+  
+  a, a > code {
+    color: rgb(249, 38, 114);
+    text-decoration: none;
+  }
+}
+
+.wrap_code pre {
+  white-space: pre-wrap;
+}
+
+.small_code .remark-code {
+  font-size: 20px;
+}
+
+.smallest_code .remark-code {
+  font-size: 18px;
+}
+
+.super_smallest_code .remark-code {
+  font-size: 14px;
+}
+
+/* Two-column layout */
+.left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+}
+    .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+
+.left-column2 {
+        color: #edededf6;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+        background-color: #000;
+        padding: 10px;
+        margin-right: 10px;
+       
+}
+    .left-column2 h2:last-of-type, .left-column h3:last-child {
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        
+    }
+.right-column {
+width: 75%;
+float: right;
+vertical-align: top;
+font-family: 'Droid Serif';
+}
+
+.pull-left {
+    float: left;
+    width: 47%;
+}
+.pull-right {
+    float: right;
+    width: 47%;
+}
+.pull-right ~ p {
+    clear: both;
+}
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: spaced
+layout: true
+
+
+---
+
+
+class: inverse, center, middle
+
+#  Form Validation
+
+---
+
+# HTML5 validators
+
+- required
+
+```html 
+<input id="choose" name="i_like" required>
+```
+- number
+
+```html 
+ <input type="number" id="number" name="amount" value="1" 
+ min="1" max="10">
+```
+
+---
+# Email Validator
+- email
+
+```html 
+<input type="email" id="t2" name="email" required>
+```
+
+### Custom Message
+
+```js
+var email = document.getElementById("mail");
+
+email.addEventListener("input", function (event) {
+  if (email.validity.typeMismatch) {
+    email.setCustomValidity("I expect an e-mail, darling!");
+  } else {
+    email.setCustomValidity("");
+  }
+});
+
+Constraint validation API methods = setCustomValidity
+Constraint validation API properties = validity.typeMismatch
+
+```
+
+---
+
+# Constraint validation API methods
+- checkValidity()
+-setCustomValidity(message)
+---
+# Constraint validation API properties
+- validationMessage
+- validity
+- validity.customError
+- validity.patternMismatch
+- validity.rangeOverflow
+- validity.rangeUnderflow
+- validity.stepMismatch
+- validity.tooLong
+- validity.typeMismatch
+
+[Validation Constraints](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation)
+
+---
+
+# Max and Min
+- minlength
+- maxlength
+
+```html 
+<form>
+    <div>
+        <label for="choose">Would you prefer a banana or a cherry?</label>
+        <input id="choose" name="i_like" required minlength="6" maxlength="6">
+    </div>
+    <div>
+        <label for="number">How many would you like?</label>
+        <input type="number" id="number" name="amount" value="1" min="1" max="10">
+    </div>
+    <div>
+        <button>Submit</button>
+    </div>
+</form>
+```
+
+
+
+
+---
+# Regular Expression
+
+email:
+
+
+
+- a — matches one character that is a (not b, not aa, etc.)
+- abc — matches a, followed by b, followed by c.
+- a* — matches the character a, zero or more times (+ matches a character one or more times).
+- [^a] — matches one character that is not a.
+
+- a{5,7} — matches a, 5 to 7 times, but no less or more.
+
+[Cheat Sheet](https://www.debuggex.com/cheatsheet/regex/javascript)
+
+---
+
+
+
+# Pattern Matching
+
+```html 
+<form>
+        <label for="choose">Do you prefer css or html?</label>
+        <input id="choose" name="i_like" required pattern="css| html">
+        <button>Submit</button>
+      </form>
+```
+
+
+---
+
+# Regular Expression and Javascript
+
+```js 
+var re = /ab+c/;
+```
+
+```js 
+var re = new RegExp('ab+c');
+```
+
+```js 
+re.test(email.value);
+```
+
+---
+
+
+
+
+
+
+---
+
+
+---
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        highlightStyle: 'zenburn',
+        highlightLanguage: 'text',
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      AWS Deployment
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  margin: 20px 0 30px 0;
+}
+h1 span.filename {
+  font-family: 'Roboto Mono', monospace;
+  color: #489963;
+  font-size: 75%;
+}
+.remark-code, .remark-inline-code {
+  font-family: 'Roboto Mono', monospace;
+}
+.remark-code {
+  font-size: 22px;
+  
+}
+.remark-slide-content {
+  font-size: 28px;
+  padding: 1em 2em 1em 2em;
+  background-color: #fdfdfd;
+}
+.spaced li {
+  margin-top: 1rem;
+}
+.spaced li li {
+  margin-top: 0.5rem;
+}
+.tight li {
+  margin-top: 0.5rem;
+}
+.tight li li {
+  margin-top: 0.2rem;
+}
+.code18 .remark-code {
+  font-size: 18px;
+}
+hr {
+  border: 0;
+  border-bottom: 3px solid #777;
+  margin: 40px 0;
+}
+.inverse {
+  background-size: 120px 50px;
+  background-position: 97% 3%;
+}
+.inverse .remark-code, .inverse .remark-inline-code {
+  color: #489963;
+}
+  
+@media only screen {
+  .inverse {
+    background-color: #272822;
+    color: #eaeaea;
+    text-shadow: 0 0 20px #333;
+  }
+  
+  .inverse h1, .inverse h2 {
+    color: #f3f3f3;
+    line-height: 1.0em;
+  }
+  
+  a, a > code {
+    color: rgb(249, 38, 114);
+    text-decoration: none;
+  }
+}
+.wrap_code pre {
+  white-space: pre-wrap;
+}
+.small_code .remark-code {
+  font-size: 20px;
+}
+.smallest_code .remark-code {
+  font-size: 18px;
+}
+.super_smallest_code .remark-code {
+  font-size: 14px;
+}
+
+.imgs{
+    /* margin-left:auto; margin-right:auto; position:relative; */
+    display:block;
+    text-align: center;
+}
+
+.leftJustify{
+    width: 100%;
+    text-align: left;
+}
+/* Two-column layout */
+.left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+}
+    .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+.left-column2 {
+        color: #edededf6;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+        background-color: #000;
+        padding: 10px;
+        margin-right: 10px;
+       
+}
+    .left-column2 h2:last-of-type, .left-column h3:last-child {
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        
+    }
+.right-column {
+width: 75%;
+float: right;
+vertical-align: top;
+font-family: 'Droid Serif';
+}
+.pull-left {
+    float: left;
+    width: 47%;
+}
+.pull-right {
+    float: right;
+    width: 47%;
+}
+.pull-right ~ p {
+    clear: both;
+}
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: spaced
+layout: true
+
+---
+
+class: inverse, center, middle
+
+#  AWS S3 -
+
+### Deploying Your Static Website
+
+
+---
+# AWS S3 
+
+- You can host a static website on Amazon S3. 
+- On a static website, individual web pages include static content and they might also contain client-side scripts.
+- a dynamic website relies on server-side processing, including server-side scripts such as Node, PHP, JSP, or ASP.NET.
+- __Amazon S3 does not support server-side scripting.__ 
+
+---
+# To configure an S3 bucket for static website hosting
+
+- Sign in to the AWS Management Console and open the Amazon S3 console at https://console.aws.amazon.com/s3/.
+- Click on Create Bucket
+
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/AWS/CreateBucket.png">
+</div>
+---
+
+# In "Bucket Name" enter your domain Name
+
+- for example digitalcrafts.com 
+- click "next" through all screens, the last button click on "Create Bucket"
+
+---
+
+# Setting Properties
+
+- Click on your bucket instance
+- On the pop-up screen click "permissions"
+- Click on "Properties" in the top navigation
+- Click on Static Website hosting 
+- Click "use this bucket to host a website"
+- In the "Index" field, enter the name of your index file, i.e. index.html 
+- Click "Save"
+- Click Permissions at top of page
+
+
+
+---
+
+# Changing Permissions
+-Enter this code into your Permissions to make site publically asscessable
+- Change the example-bucket to your domain name
+```json 
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "PublicReadGetObject",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": [
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::example-bucket/*"
+            ]
+        }
+    ]
+} 
+
+```
+
+---
+
+- save your script 
+- you will get a warning message that you're making this public 
+- Click on overview
+
+---
+# Uploading Files 
+
+- Click on Upload 
+- Add files 
+- Be sure to include index.html.  This is the entry point for your website 
+- Click "next" until you're completely out of this form.
+
+---
+# Redirect 
+
+- Create New bucket for redirect 
+- __www__digitalcrafts.com 
+- Follow same directions above, but when get to "Static website hosting" click on "Redirect Request"
+- Target bucket or domain: digitalcrafts.com 
+- Protocol: http 
+- Click Save 
+- Follow same with instuctions for setting permissions 
+
+
+---
+
+# Route 53
+
+- 53 is the port for DNS
+- Navigate to: Services -> Route 53 -> Hosted Zones
+- Click on your domain name 
+
+
+---
+
+# Creating Alias #1 
+
+- Click "Create Record Set" 
+- Click "Alias"
+- Find the name of your domain: digitalcrafts.com in the Alias Target dropdown 
+- Click Create
+
+
+---
+
+# Creating Alias #2 
+
+- Click "Create Record Set"
+- Enter www in the name field 
+- Click "Alias"
+- Find the name of your domain: wwww.digitalcrafts.com in the Alias Target dropdown 
+- Click Create 
+
+
+---
+
+# Map NS (Name Server)
+
+Map all of the domain name servers to the site where you purchased your domain name.
+
+---
+
+
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        highlightStyle: 'zenburn',
+        highlightLanguage: 'text',
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>

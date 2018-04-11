@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      DOM Programming
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  margin: 20px 0 30px 0;
+}
+
+h1 span.filename {
+  font-family: 'Roboto Mono', monospace;
+  color: #489963;
+  font-size: 75%;
+}
+
+.remark-code, .remark-inline-code {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.remark-code {
+  font-size: 22px;
+  
+}
+
+.remark-slide-content {
+  font-size: 28px;
+  padding: 1em 2em 1em 2em;
+  background-color: #fdfdfd;
+}
+
+
+.spaced li {
+  margin-top: 1rem;
+}
+
+.spaced li li {
+  margin-top: 0.5rem;
+}
+
+.tight li {
+  margin-top: 0.5rem;
+}
+
+.tight li li {
+  margin-top: 0.2rem;
+}
+
+.code18 .remark-code {
+  font-size: 18px;
+}
+
+hr {
+  border: 0;
+  border-bottom: 3px solid #777;
+  margin: 40px 0;
+}
+
+
+.inverse {
+  background-size: 120px 50px;
+  background-position: 97% 3%;
+}
+
+.inverse .remark-code, .inverse .remark-inline-code {
+  color: #489963;
+}
+  
+@media only screen {
+  .inverse {
+    background-color: #272822;
+    color: #eaeaea;
+    text-shadow: 0 0 20px #333;
+  }
+  
+  .inverse h1, .inverse h2 {
+    color: #f3f3f3;
+    line-height: 1.0em;
+  }
+  
+  a, a > code {
+    color: rgb(249, 38, 114);
+    text-decoration: none;
+  }
+}
+
+.wrap_code pre {
+  white-space: pre-wrap;
+}
+
+.small_code .remark-code {
+  font-size: 20px;
+}
+
+.smallest_code .remark-code {
+  font-size: 18px;
+}
+
+.super_smallest_code .remark-code {
+  font-size: 14px;
+}
+
+/* Two-column layout */
+.left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+}
+    .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+
+.left-column2 {
+        color: #edededf6;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+        background-color: #000;
+        padding: 10px;
+        margin-right: 10px;
+       
+}
+    .left-column2 h2:last-of-type, .left-column h3:last-child {
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        
+    }
+.right-column {
+width: 75%;
+float: right;
+vertical-align: top;
+font-family: 'Droid Serif';
+}
+
+.pull-left {
+    float: left;
+    width: 47%;
+}
+.pull-right {
+    float: right;
+    width: 47%;
+}
+.pull-right ~ p {
+    clear: both;
+}
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: spaced
+layout: true
+
+
+---
+
+
+class: inverse, center, middle
+
+#  DOM Programming
+
+### DOM DOM DOM DOM ... DOM
+
+---
+# What is the DOM?
+
+The Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the page so that programs can change the document structure, style, and content. 
+
+The DOM is an object-oriented representation of the web page, which can be modified with a scripting language such as JavaScript.
+
+
+---
+![DOM](https://www.w3schools.com/js/pic_htmltree.gif)
+
+---
+ 
+# Accessing elements
+
+```js
+
+document.getElementsByTagName('div');
+document.getElementsByClassName('container');
+document.getElementById('some-id');
+```
+
+
+???
+
+
+Let's write that in the console and see what it gives us.
+If you create a variable and assign it the result of calling `document.getElementsByTagName('a')`
+
+Let's call that variables `anchorTagList`. Why? Because it returns a list of anchor tags.
+
+---
+# Reading/writing attributes
+
+```js
+var anchor = document.getElementsByClassName('a')[0];
+var img = document.getElementsByClassName('img')[0];
+
+var newImage = a.getAttribute('href');
+img.setAttribute('src', newImage);
+
+```
+
+???
+
+Let's write a function that changes the `src` attribute of the main image.
+
+Once you have a reference to an element, you can call `getAttribute` and `setAttribute`
+
+---
+# Reading/writing properties
+
+```js
+var theCaption = document.getElementsByTagName('p')[0];
+theCaption.textContent = 'Hey there!';
+```
+
+
+
+???
+
+
+Then let's write one that changes the text of the caption.
+
+Text is treated a little bit differently
+
+---
+
+# BTW: innerHTML
+
+
+```js
+var theCaption = document.getElementsByTagName('p')[0];
+theCaption.textContent = 'Hey there!';
+```
+
+---
+
+```js
+var body = document.body;
+body.innerHTML = 'Hey there!'; // kablooey
+```
+
+
+???
+
+Yeah, this is a thing. Don't abuse it.
+
+---
+# querySelectorAll (and querySelector)
+
+```js
+var body = document.querySelector('body');
+var theContainer = document.querySelectorAll('.container');
+```
+???
+
+These DOM APIs let you access DOM elements by using selectors.
+This is great!
+You can refer to collections of things on the page the same way you do with CSS!
+
+But this is terrible!
+You shouldn't share "names" of things between CSS and JavaScript.
+
+So, what do we do?
+
+---
+
+# Data Attributes
+
+
+```html
+<a href="otter.jpg" data-target="trigger">Click here for otters!</a>
+
+<div class="container" data-target="top-level-container">
+<!-- stuff goes here  -->
+</div>
+```
+
+
+???
+
+This is the right way to access.
+Why? You can access via tag, class, and id - but those could be subject to change.
+
+- tag names are structural, and you would then need a way to filter out the ones that aren't in the nav (in this example)
+- class names are for styling, and you already know that those might change.
+- IDs are no good - there can be only one, which makes it next to useless, unless you wanted to give everything a unique ID.
+
+---
+# Data Attribute Selectors
+
+```css
+[data-target] {}
+[data-target="trigger"] {}
+```
+
+
+---
+# Creating elements
+
+```js
+var aNewDiv = document.createElement('div');
+var anAnchor = document.createElement('a');
+anAnchor.setAttribute('href', '#');
+anAnchor.textContent = 'click here for goodness';
+```
+
+---
+# Adding/removing elements.
+
+```js
+aNewDiv.appendChild(anAnchor);
+document.body.appendChild(aNewDiv);
+```
+
+```js
+document.body.removeChild(aNewDiv);
+```
+
+???
+
+- appendChild
+- removeChild
+
+---
+# Building up trees of elements
+
+```js
+var navs = [
+  {
+    href: 'https://google.com',
+    text: 'Search on Google'
+  },
+  {
+    href: 'https://apple.com',
+    text: 'Buy on Apple'
+  },
+  {
+    href: 'https://amazon.com',
+    text: 'Order on Amazon'
+  },
+]
+```
+
+---
+
+# Building up trees of elements
+
+```js
+var navContainer = document.querySelector('.nav-container');
+navs.forEach(function (nav) {
+  var navElement = document.createElement('a');
+  navElement.setAttribute('href', nav.href);
+  navElement.textContent = nav.text;
+  navContainer.appendChild(navElement);
+});
+
+```
+
+???
+
+Don't ever, ever, ever modify the "live" DOM from inside a loop.
+Always build up a subtree and then add the whole thing as a batch.
+(Kinda like pushing a batch of commits!)
+---
+# Changing class names
+
+
+## Adding
+
+```js
+var nav = document.querySelectorAll('.navContainer a')[0];
+nav.classList.add('active');
+```
+
+---
+## Removing
+
+```js
+var navs = document.querySelectorAll('.navContainer a');
+navs.forEach(function (nav) {
+  nav.classList.remove('active');
+});
+```
+
+---
+
+## Toggling
+
+```js
+var nav = document.querySelectorAll('.navContainer a')[0];
+nav.classList.toggle('active');
+```
+
+---
+
+
+# Events
+---
+
+# Listening for events
+
+```js
+var navs = document.querySelectorAll('.navContainer a');
+var target = document.querySelector('[data-target="main-image"]');
+navs.forEach(function (nav) {
+  nav.addEventListener('click', function (event) {
+    event.preventDefault();
+    target.setAttribute('src', nav.getAttribute('href'));
+    // older version of `event.preventDefault()`
+    // return false;
+  });
+});
+```
+
+???
+
+Once you have a reference to an element you can associate a function with a particular user action.
+
+For example, this causes a particular function to run when the user clicks an anchor that has the data-attribute "trigger
+
+---
+# Exhaustive list of events
+
+- [MDN list of events](https://developer.mozilla.org/en-US/docs/Web/Events)
+
+## Right now, you are mostly interested in keyboard and mouse events
+
+---
+
+# oh, but also...
+
+## May need to convert to an actual Array...
+
+- [MDN Docs on NodeList](https://developer.mozilla.org/en-US/docs/Web/API/NodeList)
+---
+# Why?
+
+- map!
+- filter!
+- reduce!
+---
+# How?
+
+```js
+[].slice.call
+```
+
+## or write a function:
+
+
+```js
+function toArray(nodeList) {
+  var arr = nodeList;
+  if (nodeList.forEach === undefined)  {
+    arr = [].slice.call(nodeList);
+  }
+
+  return arr;
+}
+```
+
+---
+
+# General advice on JS
+---
+# Recommended structure
+
+```js
+// "constants"
+
+// variables
+
+// helper functions
+
+// main function
+```
+
+---
+
+# General workflow
+
+- write a small function
+- save your changes
+- test it in the console
+
+
+
+
+---
+
+
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        highlightStyle: 'zenburn',
+        highlightLanguage: 'text',
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>

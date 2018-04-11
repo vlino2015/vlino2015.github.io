@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      PyGame - DigitalCrafts
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  margin: 20px 0 30px 0;
+}
+
+h1 span.filename {
+  font-family: 'Roboto Mono', monospace;
+  color: #489963;
+  font-size: 75%;
+}
+
+.remark-code, .remark-inline-code {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.remark-code {
+  font-size: 22px;
+  
+}
+
+.remark-slide-content {
+  font-size: 28px;
+  padding: 1em 2em 1em 2em;
+  background-color: #fdfdfd;
+}
+
+
+.spaced li {
+  margin-top: 1rem;
+}
+
+.spaced li li {
+  margin-top: 0.5rem;
+}
+
+.tight li {
+  margin-top: 0.5rem;
+}
+
+.tight li li {
+  margin-top: 0.2rem;
+}
+
+.code18 .remark-code {
+  font-size: 18px;
+}
+
+hr {
+  border: 0;
+  border-bottom: 3px solid #777;
+  margin: 40px 0;
+}
+
+
+.inverse {
+  background-size: 120px 50px;
+  background-position: 97% 3%;
+}
+
+.inverse .remark-code, .inverse .remark-inline-code {
+  color: #489963;
+}
+  
+@media only screen {
+  .inverse {
+    background-color: #272822;
+    color: #eaeaea;
+    text-shadow: 0 0 20px #333;
+  }
+  
+  .inverse h1, .inverse h2 {
+    color: #f3f3f3;
+    line-height: 1.0em;
+  }
+  
+  a, a > code {
+    color: rgb(249, 38, 114);
+    text-decoration: none;
+  }
+}
+
+.wrap_code pre {
+  white-space: pre-wrap;
+}
+
+.small_code .remark-code {
+  font-size: 20px;
+}
+
+.smallest_code .remark-code {
+  font-size: 18px;
+}
+
+.super_smallest_code .remark-code {
+  font-size: 14px;
+}
+
+/* Two-column layout */
+.left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+}
+    .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+
+.left-column2 {
+        color: #edededf6;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+        background-color: #000;
+        padding: 10px;
+        margin-right: 10px;
+       
+}
+    .left-column2 h2:last-of-type, .left-column h3:last-child {
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        
+    }
+.right-column {
+width: 75%;
+float: right;
+vertical-align: top;
+font-family: 'Droid Serif';
+}
+
+.pull-left {
+    float: left;
+    width: 47%;
+}
+.pull-right {
+    float: right;
+    width: 47%;
+}
+.pull-right ~ p {
+    clear: both;
+}
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: spaced
+layout: true
+
+
+---
+
+
+class: inverse, center, middle
+
+#  Forms
+
+---
+
+
+---
+# Form Structure
+
+The form tag is an element is a container that holds all of your form controls on your page.
+ 
+
+- You can have multiple form regions
+- Each form element on the page has an __elements collection__ which holds all of the form controls.
+- the HTML __form__ element defines a form that is used to collect user input:
+
+```html 
+
+			<p>This is where the form controls will appear.</p>
+```
+
+---
+
+```html
+<input>
+
+<select></select>
+<button></button>
+```
+---
+
+# Types of form controls
+
+```html 
+<form action= "#">
+    <input type= "text" name= "emailaddress">
+    <input type= "submit" name= "submit">
+</form>
+  
+```
+Forms on a web page provide an interface where information can be shared between a client and a user more easily and securely in comparison to paper-based forms. They are a collection of various <input> types, such as textbox, radiobutton, and checkbox, which allow users to perform various actions and simplifies decision making.
+
+
+
+Form elements are different types of input elements, like text fields, checkboxes, radio buttons, submit buttons, and more.
+
+Forms still send the values to the server when the user clicks on the Submit button Forms are still enclosed in the <form> element, as shown in the following code snippet:
+
+    
+```html 
+
+  <p>Username:
+    <input type="text" name="username" size="15" maxlength="30" />
+  </p>
+
+  
+```
+
+---
+Password Input
+```html
+<input type="password" id="pwd" name="pwd" />
+Textarea
+        
+---
+Radio Button
+
+```html 
+
+  <p>Please select your favorite genre:
+    <br />
+    <input type="radio" name="genre" value="rock" checked="checked" /> Rock
+    <input type="radio" name="genre" value="pop" /> Pop
+    <input type="radio" name="genre" value="jazz" /> Jazz
+  </p>
+
+  
+```
+
+---       
+Checkbox
+```html
+
+  <p>Please select your favorite music service(s):
+    <br />
+    <input type="checkbox" name="service" value="itunes" checked="checked" /> iTunes
+    <input type="checkbox" name="service" value="lastfm" /> Last.fm
+    <input type="checkbox" name="service" value="spotify" /> Spotify
+  </p>
+
+```
+---        
+Drop Down List Box
+```html
+
+  <p>What device do you listen to music on?</p>
+  <select name="devices">
+    <option value="ipod">iPod</option>
+    <option value="radio">Radio</option>
+    <option value="computer">Computer</option>
+  </select>
+
+  
+```
+
+---        
+        
+Multiple Select Box
+```html
+
+  <p>Do you play any of the following instruments? (You can select more than one option by holding down control on a PC or command key on a Mac while selecting different options.)</p>
+  <select name="instruments" size="3" multiple="multiple">
+    <option value="guitar" selected="selected">Guitar</option>
+    <option value="drums">Drums</option>
+    <option value="keyboard" selected="selected">Keyboard</option>
+    <option value="bass">Bass</option>
+  </select>
+  
+```
+
+---
+File Input Box
+```html
+
+  <p>Upload your song in MP3 format:</p>
+  <input type="file" name="user-song" /><br />
+  <input type="submit" value="Upload" />
+
+  
+```
+---
+        
+Submit Button
+```html
+
+  <p>Subscribe to our email list:</p>
+  <input type="text" name="email" />
+  <input type="submit" name="subscribe" value="Subscribe" />
+
+  
+```
+
+---
+Image Button
+```html
+
+  <p>Subscribe to our email list:</p> 
+  <input type="text" name="email" />
+  <input type="image" src="images/subscribe.jpg" width="100" height="20" />
+  
+```
+
+---
+Button and Hidden Controls
+```html
+
+  <button><img src="images/add.gif" alt="add" width="10" height="10" /> Add</button>
+  <input type="hidden" name="bookmark" value="lyrics" />
+  
+```
+        
+---
+
+
+---
+# Accessing Form Controls (Javascript)
+
+-Each item in the elements collection can be accessed byindex number or by the value of its name attribue
+
+Each item in a collection is given an index number ( a number staring at 0, like an arrary).
+This would access the second form using its index number.
+```js
+document.forms[1];
+```
+
+You can also access a form using the value of its __name__ attribute.  The following would
+selelct a from whose __name__ atritube has a value of login.
+```js 
+document.forms.login;
+```
+
+The following would access the second form on the page and then select the first form control within it.
+```js 
+document.forms[1].elements[0];
+```
+the following would access the second form on the page, then select the element whose __name__ attibute had a value of passowrd from that form
+```js 
+document.forms[1].element.password;
+```
+
+---
+
+
+---
+
+
+---
+
+
+---
+
+
+---
+
+
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        highlightStyle: 'zenburn',
+        highlightLanguage: 'text',
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>

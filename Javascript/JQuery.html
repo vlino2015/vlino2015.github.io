@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      DOM Programming
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  margin: 20px 0 30px 0;
+}
+
+h1 span.filename {
+  font-family: 'Roboto Mono', monospace;
+  color: #489963;
+  font-size: 75%;
+}
+
+.remark-code, .remark-inline-code {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.remark-code {
+  font-size: 22px;
+  
+}
+
+.remark-slide-content {
+  font-size: 28px;
+  padding: 1em 2em 1em 2em;
+  background-color: #fdfdfd;
+}
+
+
+.spaced li {
+  margin-top: 1rem;
+}
+
+.spaced li li {
+  margin-top: 0.5rem;
+}
+
+.tight li {
+  margin-top: 0.5rem;
+}
+
+.tight li li {
+  margin-top: 0.2rem;
+}
+
+.code18 .remark-code {
+  font-size: 18px;
+}
+
+hr {
+  border: 0;
+  border-bottom: 3px solid #777;
+  margin: 40px 0;
+}
+
+
+.inverse {
+  background-size: 120px 50px;
+  background-position: 97% 3%;
+}
+
+.inverse .remark-code, .inverse .remark-inline-code {
+  color: #489963;
+}
+  
+@media only screen {
+  .inverse {
+    background-color: #272822;
+    color: #eaeaea;
+    text-shadow: 0 0 20px #333;
+  }
+  
+  .inverse h1, .inverse h2 {
+    color: #f3f3f3;
+    line-height: 1.0em;
+  }
+  
+  a, a > code {
+    color: rgb(249, 38, 114);
+    text-decoration: none;
+  }
+}
+
+.wrap_code pre {
+  white-space: pre-wrap;
+}
+
+.small_code .remark-code {
+  font-size: 20px;
+}
+
+.smallest_code .remark-code {
+  font-size: 18px;
+}
+
+.super_smallest_code .remark-code {
+  font-size: 14px;
+}
+
+/* Two-column layout */
+.left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+}
+    .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+
+.left-column2 {
+        color: #edededf6;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+        background-color: #000;
+        padding: 10px;
+        margin-right: 10px;
+       
+}
+    .left-column2 h2:last-of-type, .left-column h3:last-child {
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        
+    }
+.right-column {
+width: 75%;
+float: right;
+vertical-align: top;
+font-family: 'Droid Serif';
+}
+
+.pull-left {
+    float: left;
+    width: 47%;
+}
+.pull-right {
+    float: right;
+    width: 47%;
+}
+.pull-right ~ p {
+    clear: both;
+}
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: spaced
+layout: true
+
+
+---
+
+
+class: inverse, center, middle
+
+# jQuery
+
+---
+
+
+# What is jQuery?
+
+fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers. With a combination of versatility and extensibility, jQuery has changed the way that millions of people write JavaScript
+
+---
+
+# What is it used for?
+
+## All the (browser) things
+
+- DOM Access/Creation/Manipulation
+
+- Event handling
+
+- Forms
+
+- Ajax
+
+- CSS manipulation
+
+- Animation and Special Effects
+
+---
+
+# How to install jQuery
+[jQuery](http://code.jquery.com/)
+
+
+
+
+- Call directly from CDN
+- Install your own copy
+
+---
+# Reference Material
+
+
+- [jQuery API](http://api.jquery.com/)
+- [Alternative jQuery Documentation](http://jqapi.com/)
+- [Dash - offline documentation](https://kapeli.com/dash)
+- [stack overflow](https://stackoverflow.com/)
+
+
+---
+
+The primary function of jQuery is to operate on DOM elements that we select from our active document, but we can't do that until those DOM elements have been successfully loaded and understood by the browser.
+
+Searching for DOM elements in Javascript
+
+```js
+document.getElementById('#nameOfID');
+document.getElementsByClassName('classNameOfElement');
+```
+
+```js
+document.querySelector('.className');
+document.querySelectorAll('.className');
+document.getElementsByTagName('p');
+```
+---
+
+# Searching for DOM elements in jQuery
+
+- wait for all of the elements to load
+- use: $(css selector)
+- or: jQuery(css selector)
+
+```js
+
+```
+$()
+
+```js
+
+$(document).ready(function () {
+  $('button').click(function () {
+    $(this).text('You clicked me');
+  });
+});
+
+```
+
+---
+# DOM Selection: tags
+
+```js
+document.getElementsByTagName('a');
+document.querySelectorAll('a');
+```
+
+```js
+$('a')
+```
+
+---
+# DOM Selection: id
+
+```js
+document.getElementById('main-menu');
+document.querySelector('#main-menu');
+```
+
+
+```js
+$('#main-menu')
+```
+
+---
+
+# DOM Selection: class name
+
+```js
+document.getElementsByClassName('nav-item');
+document.querySelectorAll('.nav-item');
+```
+
+```js
+$('.nav-item')
+```
+---
+
+# DOM Selection: data attribute
+
+```js
+document.querySelector('[data-image="target"]');
+```
+
+
+```js
+$('[data-image="target"]')
+```
+
+---
+# Advice: prefix your variables
+
+```js
+var $mainNav = $('[data-ui-role="main-nav"]');
+var $thumbnails = $('[data-image-role="trigger"]');
+```
+
+
+## Informs you and team that a variable refers to a jQuery element
+
+---
+
+template: cover
+
+# Creating/Adding/Removing elements
+
+
+---
+
+# Creating elements
+
+```js
+var $anchor = $('<a></a>');
+
+// same, but shorter:
+var $anchor = $('<a>');
+```
+
+---
+
+# Creating elements with attributes
+
+```js
+var $anchor = $('<a>', {
+  'class': 'nav-item',
+  'data-image': 'trigger',
+  'text': 'Click me!'
+});
+```
+
+---
+
+# Appending elements
+
+
+```js
+var $anchor = $('<a>', {
+  'class': 'nav-item',
+  'data-image': 'trigger',
+  'text': 'Click me!'
+});
+var $image = $('<img>', {
+  'src': 'images/otter1.jpg',
+  'alt': 'a proud and majestic otter'
+})
+$anchor.append($image);
+```
+
+---
+
+# .addClass(), .removeClass(), .toggleClass()
+
+```js
+$anchor.addClass('active');
+$anchor.removeClass('active');
+$anchor.toggleClass('active');
+
+```
+---
+
+template: cover
+
+# Handling events with jQuery
+
+---
+
+```js
+
+<button id="the-button" onclick="alert('hello')">
+  Click Me
+</button>
+
+```
+
+```js
+
+$('#the-button').click(function () {
+  alert('hello');
+})
+```
+
+---
+
+# .on()
+
+```js
+$anchor.on('click', function (event) {
+  // do stuff!
+})
+```
+
+---
+
+# .on() with a filtering selector
+
+```js
+var $thumbnailContainer = $('.nav-container')
+$thumbnailContainer.on('click', 'a', function (event) {
+  // do stuff!
+})
+```
+
+---
+Prevent the Default Event
+
+```js
+$('a').click(function (event) {
+  event.preventDefault();
+});
+
+```
+---
+
+```js
+$('textarea').keydown(function (event) {
+  console.log('Key Down:', event.keyCode);
+});
+$('textarea').keyup(function (event) {
+  console.log('Key Up:', event.keyCode);
+});
+
+```
+
+---
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        highlightStyle: 'zenburn',
+        highlightLanguage: 'text',
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>

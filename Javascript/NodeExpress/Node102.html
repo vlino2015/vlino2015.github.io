@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Node 101 - DigitalCrafts
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  margin: 20px 0 30px 0;
+}
+
+h1 span.filename {
+  font-family: 'Roboto Mono', monospace;
+  color: #489963;
+  font-size: 75%;
+}
+
+.remark-code, .remark-inline-code {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.remark-code {
+  font-size: 22px;
+  
+}
+
+.remark-slide-content {
+  font-size: 28px;
+  padding: 1em 2em 1em 2em;
+  background-color: #fdfdfd;
+}
+
+
+.spaced li {
+  margin-top: 1rem;
+}
+
+.spaced li li {
+  margin-top: 0.5rem;
+}
+
+.tight li {
+  margin-top: 0.5rem;
+}
+
+.tight li li {
+  margin-top: 0.2rem;
+}
+
+.code18 .remark-code {
+  font-size: 18px;
+}
+
+hr {
+  border: 0;
+  border-bottom: 3px solid #777;
+  margin: 40px 0;
+}
+
+
+.inverse {
+  background-size: 120px 50px;
+  background-position: 97% 3%;
+}
+
+.inverse .remark-code, .inverse .remark-inline-code {
+  color: #489963;
+}
+  
+@media only screen {
+  .inverse {
+    background-color: #272822;
+    color: #eaeaea;
+    text-shadow: 0 0 20px #333;
+  }
+  
+  .inverse h1, .inverse h2 {
+    color: #f3f3f3;
+    line-height: 1.0em;
+  }
+  
+  a, a > code {
+    color: rgb(249, 38, 114);
+    text-decoration: none;
+  }
+}
+
+.wrap_code pre {
+  white-space: pre-wrap;
+}
+
+.small_code .remark-code {
+  font-size: 20px;
+}
+
+.smallest_code .remark-code {
+  font-size: 18px;
+}
+
+.super_smallest_code .remark-code {
+  font-size: 14px;
+}
+
+.textAlignLeft{
+    text-align: left;
+}
+
+/* Two-column layout */
+.left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+}
+    .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+
+.left-column2 {
+        color: #edededf6;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+        background-color: #000;
+        padding: 10px;
+        margin-right: 10px;
+       
+}
+    .left-column2 h2:last-of-type, .left-column h3:last-child {
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        
+    }
+.right-column {
+width: 75%;
+float: right;
+vertical-align: top;
+font-family: 'Droid Serif';
+}
+
+.pull-left {
+    float: left;
+    width: 47%;
+}
+.pull-right {
+    float: right;
+    width: 47%;
+}
+.pull-right ~ p {
+    clear: both;
+}
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: spaced
+layout: true
+
+
+---
+
+
+class: inverse, center, middle
+
+#  Node & Express Part 2
+
+---
+# HTTP Request with Node
+
+One of the core modules in the Node Modules is http (hyper text transfer protocol)
+- allows you to work with websites.
+- Module allows you to work with methods common to HTTP.
+    
+---
+# Node & http
+
+CreateServer(req, res) 
+- response.writeHead()
+- response.write()
+- response.end()
+
+- server.listen(port)
+
+---
+
+# HTTP & Node
+
+```node 
+
+
+var http = require('http');
+
+var myServer = http.createServer(function(request, response){
+
+    response.writeHead(200, {"Content-Type": "text/plain"});
+
+    //to send back something to client
+
+    response.write('Digital Crafts');
+
+    response.end();
+
+});
+
+//asking server to  to listen on  a specific port
+
+myServer.listen(3000);
+```
+
+---
+
+
+# HTTP Request with Express
+```node 
+
+var express = require('express');
+var app = express();
+
+app.get('/', function(req, res) {
+
+    res.send('Hello World!');
+});
+
+
+app.listen(3000, function(){
+    console.log('Example app listening on port 3000!');
+});
+
+```
+
+
+
+---
+# Route Examples
+
+- app.get('/about', ...)
+- app.get('/article/1', ...)
+- app.post('/create_new_article', ...)
+- app.put('/article/1', ...)
+- app.delete('/article/1', ...)
+---
+
+
+# 3 Types of Parameters
+
+- route parameters: __req.params__
+- query parameters: __req.query__
+- Post body parameters: __req.body__
+
+---
+
+# Route Parameters
+---
+
+# Example of route parameter use
+
+- /articles/:id -> /articles/5
+- /wiki/:pagename -> /wiki/JavaScript
+- /organization/:orgID/client/:clientId/project/:projectId ->/organization/48/client/8/project/45
+---
+
+# Route Parameters
+
+```node 
+
+app.get('/hello/:name', function(req, res){
+    var name = req.params.name || 'world';
+    res.send('Hello ' + name + '!');
+    
+});
+```
+---
+
+# Query Parameters
+
+---
+
+# Query Parameters
+
+- A question mark (?) in the URL beginsthequery parameter string
+- String consists of any number of name value pairs: __name=value__
+- Multiple name value pairs are separated by __&__ 
+- Certain characters (like spaces) are encoded
+---
+
+# Query Parameter Example
+
+- /search?__q=Cats+Please__ - 1 q parameter with value "Cats Please"
+- /search?__q=Cats+Please&feel_lucky=YES__ - 2 parameters: 
+    - q = "Cats Please"
+    - feel_lucky = "YES"
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        highlightStyle: 'zenburn',
+        highlightLanguage: 'text',
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>

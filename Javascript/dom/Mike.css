@@ -1,0 +1,25 @@
+#table {
+    background-color: rgb(35, 201, 35);
+    margin: 50px 50px 50px 50px;
+    border-radius: 8px 8px 8px 8px;
+    border: 5px black solid;
+    height: 700px;
+}
+#dealer-hand {
+    display:block;
+    background-color: lightgreen;
+    margin: 10px 10px 10px 10px;
+    height: 250px;
+}
+
+#player-hand {
+    display:block;
+    background-color: lightgreen;
+    margin: 10px 10px 10px 10px;
+    height: 250px;
+}
+#deal-button {
+    text-align: center;
+    margin-left: 650px;
+}
+    

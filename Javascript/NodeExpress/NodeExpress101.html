@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Node 101 - DigitalCrafts
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  margin: 20px 0 30px 0;
+}
+
+h1 span.filename {
+  font-family: 'Roboto Mono', monospace;
+  color: #489963;
+  font-size: 75%;
+}
+
+.remark-code, .remark-inline-code {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.remark-code {
+  font-size: 22px;
+  
+}
+
+.remark-slide-content {
+  font-size: 28px;
+  padding: 1em 2em 1em 2em;
+  background-color: #fdfdfd;
+}
+
+
+.spaced li {
+  margin-top: 1rem;
+}
+
+.spaced li li {
+  margin-top: 0.5rem;
+}
+
+.tight li {
+  margin-top: 0.5rem;
+}
+
+.tight li li {
+  margin-top: 0.2rem;
+}
+
+.code18 .remark-code {
+  font-size: 18px;
+}
+
+hr {
+  border: 0;
+  border-bottom: 3px solid #777;
+  margin: 40px 0;
+}
+
+
+.inverse {
+  background-size: 120px 50px;
+  background-position: 97% 3%;
+}
+
+.inverse .remark-code, .inverse .remark-inline-code {
+  color: #489963;
+}
+  
+@media only screen {
+  .inverse {
+    background-color: #272822;
+    color: #eaeaea;
+    text-shadow: 0 0 20px #333;
+  }
+  
+  .inverse h1, .inverse h2 {
+    color: #f3f3f3;
+    line-height: 1.0em;
+  }
+  
+  a, a > code {
+    color: rgb(249, 38, 114);
+    text-decoration: none;
+  }
+}
+
+.wrap_code pre {
+  white-space: pre-wrap;
+}
+
+.small_code .remark-code {
+  font-size: 20px;
+}
+
+.smallest_code .remark-code {
+  font-size: 18px;
+}
+
+.super_smallest_code .remark-code {
+  font-size: 14px;
+}
+
+.textAlignLeft{
+    text-align: left;
+}
+
+/* Two-column layout */
+.left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+}
+    .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+
+.left-column2 {
+        color: #edededf6;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+        background-color: #000;
+        padding: 10px;
+        margin-right: 10px;
+       
+}
+    .left-column2 h2:last-of-type, .left-column h3:last-child {
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        
+    }
+.right-column {
+width: 75%;
+float: right;
+vertical-align: top;
+font-family: 'Droid Serif';
+}
+
+.pull-left {
+    float: left;
+    width: 47%;
+}
+.pull-right {
+    float: right;
+    width: 47%;
+}
+.pull-right ~ p {
+    clear: both;
+}
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: spaced
+layout: true
+
+
+---
+
+
+class: inverse, center, middle
+
+#  Node & Express
+
+### 
+
+---
+# What is node.js?
+
+`Node.js` is an open-source, cross-platform runtime environment used for development of server-side web applications.
+
+- based on an event-driven architechture
+- non-blocking Input/Output API that is designed to optimize an application through output and scalability for real-time web applications
+
+
+---
+# Why use Node.js?
+
+- __Asynchronous event driven IO__ helps concurrent request handling
+    - one of the biggest selling points
+    - feature means that if a request is received by Node for some Input/Output operation, it will execute the operation in the background and continue with processing other requests.
+    - other languges, Input/Ouput blocks.  When files are read in, the entire program stops.
+    
+
+- Node uses the __V8 Javascript Runtime Engine__, which is used by Google Chrome.
+
+---
+
+# Why use Node.js (cont.)?
+- Handling of concurrent requests
+    - Anther key functionality of Node is the ability to handle concurrent connections with a very minimal overhead on a single process.
+
+- Node library uses Javascript
+    - A major part of the development community is already well versed in javascript.
+
+- There is an active and vibrant community for the Node.js framework
+
+---
+
+# Who uses Node.js?
+
+- __Paypal__ A lot of sites within Paypal have also started transitioning to node.
+- __LinkedIn__ LinkedIn is using Node.js to power their Mobile Servers, which powers the iPhone, Android, and Mobile Web products.
+- __Mozilla__ has implemented Node.js to supprot browser API, which has over half a billion installs.
+
+
+---
+# When to use node
+Node is great when you need high levels of concurrency but you don't need a ot of dedicated CPU time.
+Node.js is best for usage in streaming or event-based real-time applictions
+
+- Chat applications
+- Game Servers 
+    - Fast high-performance servers that need to proces thousands of requestes at a time
+- Collaborative environment
+- Advertisement severs 
+- Streaming servers
+---
+# When not to use Node
+
+Node is structured to be *single threaded*. 
+
+*If the server is doing heavy calculations, it won't be able to process other requests.*
+
+---
+# Installing Node
+
+
+---
+
+# 2 things  you need to understand node 
+
+1. Modules
+2. Callbacks
+
+---
+# Modules
+
+Consider modules to be the same as JavaScript libraries.
+
+A set of functions you want to include in your application.
+
+- install ("name of module")
+- require("name of module")
+---
+# Callbacks
+---
+
+
+class: center
+# Callbacks you've seen
+.textAlignLeft[
+```js
+var friends = ["Mike", "Stacy", "Andy", "Rick"];
+​
+friends.forEach(function (eachName, index){
+console.log(index + 1 + ". " + eachName); // 1. Mike, 2. Stacy, 3. Andy, 4. Rick​
+});
+```
+]
+---
+class: center
+# Another Example
+.textAlignLeft[
+```js 
+function add (x, y, callback) {
+    var result = x + y;
+    callback(result);
+  }
+  add(1, 2, function (result) { console.log(result); });
+
+```
+]
+---
+class: center
+# A better Example
+.textAlignLeft[
+```js 
+
+function add (x, y, callback) {
+    setTimeout(function () {
+      var result = x + y;
+      callback(result);
+    });
+  }
+  add(1, 2, function (result) { console.log(result); });
+
+```
+]
+---
+class: center
+# Nested Callbacks 
+.textAlignLeft[
+```js 
+function add (x, y, callback) {
+    var result = x + y;
+    callback(result);
+  }
+  function multiply (x, y, callback) {
+    var result = x * y;
+    callback(result);
+  }
+  add(1, 2, function (result) {
+    multiply(result, 3, function (final_result) {
+      console.log(final_result);
+    });
+  });
+
+```
+]
+
+---
+# Node Callbacks - (Error-First Callbacks)
+
+There’s really only two rules for defining an error-first callback:
+
+- The first argument of the callback is reserved for an error object. If an error occurred, it will be returned by the first err argument.
+- The second argument of the callback is reserved for any successful response data. If no error occurred, err will be set to null and any successful data will be returned in the second argument.
+
+```node
+fs.readFile('/foo.txt', function(err, data) {
+  // TODO: Error Handling Still Needed!
+  console.log(data);
+});
+
+```
+
+
+---
+# Node Callbacks
+fs.readFile() takes in a file path to read from, and calls your callback once it has finished. If all goes well, the file contents are returned in the data argument. But if somethings goes wrong (the file doesn’t exist, permission is denied, etc) the first err argument will be populated with an error object containing information about the problem.
+---
+
+
+class: center
+# The __fs__ module
+
+.textAlignLeft[
+```js 
+
+var fs = require('fs');
+```
+]
+---
+class: center
+# Reading a file
+
+.textAlignLeft[
+```js 
+var fs = require('fs');
+fs.readFile(filename, function (error, buffer) {
+  if (error) {
+    console.error(error.message);
+    return;
+  }
+  console.log('File Data: ', buffer.toString());
+});
+})
+
+```
+]
+
+Buffer is a binary buffer object
+---
+
+class: center
+# Writing a file
+
+.textAlignLeft[
+```js 
+fs.writeFile(filename, 'I love Node', function (error) {
+  if (error) {
+    console.error(error.message);
+    return;
+  }
+  console.log('File Save: ', filename);
+});
+
+```
+]
+---
+class: center
+# Read then Write
+
+.textAlignLeft[
+```js 
+fs.readFile(filename, function (error, buffer) {
+  if (error) {
+    console.error(error.message);
+    return;
+  }
+  var contents = buffer.toString();
+  var backwards = contents.split('').reverse().join('');
+  fs.writeFile(filename, backwards, function (error) {
+    if (error) {
+      console.error(error.message);
+      return;
+    }
+    console.log('File Save: ', filename);
+  });
+});
+
+```
+
+]
+---
+class: center
+# User Input
+
+.textAlignLeft[
+```js 
+var readline = require('readline');
+var rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+rl.question("How's it going? ", function(answer) {
+  console.log("Awesomesauce:", answer);
+  rl.close();
+});
+
+```
+]
+---
+class: center
+# Starting a new project
+
+.textAlignLeft[
+```node  
+npm init
+
+```
+]
+
+.textAlignLeft[
+```node  
+npm install
+
+```
+]
+
+.pullLeft[
+- places directory under npm control
+- accept all of the default entries
+- adds a new file to the directory called __package.json__
+  - this file lists all of the dependencies that the profect needs
+]
+---
+class: center
+# Request a webpage
+Requirement: npm install request
+
+.textAlignLeft[
+```js  
+var request = require('request');
+var url = 'https://nodejs.org/en/';
+request.get(url, function (error, response, html) {
+  if (error) {
+    console.error(error.message);
+    return;
+  }
+  console.log(html);
+});
+```
+]
+---
+
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        highlightStyle: 'zenburn',
+        highlightLanguage: 'text',
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>

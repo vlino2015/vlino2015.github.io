@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      DOM Programming
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  margin: 20px 0 30px 0;
+}
+h1 span.filename {
+  font-family: 'Roboto Mono', monospace;
+  color: #489963;
+  font-size: 75%;
+}
+.remark-code, .remark-inline-code {
+  font-family: 'Roboto Mono', monospace;
+}
+.remark-code {
+  font-size: 22px;
+  
+}
+.remark-slide-content {
+  font-size: 28px;
+  padding: 1em 2em 1em 2em;
+  background-color: #fdfdfd;
+}
+.spaced li {
+  margin-top: 1rem;
+}
+.spaced li li {
+  margin-top: 0.5rem;
+}
+.tight li {
+  margin-top: 0.5rem;
+}
+.tight li li {
+  margin-top: 0.2rem;
+}
+.code18 .remark-code {
+  font-size: 18px;
+}
+hr {
+  border: 0;
+  border-bottom: 3px solid #777;
+  margin: 40px 0;
+}
+.inverse {
+  background-size: 120px 50px;
+  background-position: 97% 3%;
+}
+.inverse .remark-code, .inverse .remark-inline-code {
+  color: #489963;
+}
+  
+@media only screen {
+  .inverse {
+    background-color: #272822;
+    color: #eaeaea;
+    text-shadow: 0 0 20px #333;
+  }
+  
+  .inverse h1, .inverse h2 {
+    color: #f3f3f3;
+    line-height: 1.0em;
+  }
+  
+  a, a > code {
+    color: rgb(249, 38, 114);
+    text-decoration: none;
+  }
+}
+.wrap_code pre {
+  white-space: pre-wrap;
+}
+.small_code .remark-code {
+  font-size: 20px;
+}
+.smallest_code .remark-code {
+  font-size: 18px;
+}
+.super_smallest_code .remark-code {
+  font-size: 14px;
+}
+/* Two-column layout */
+.left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+}
+    .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+.left-column2 {
+        color: #edededf6;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+        background-color: #000;
+        padding: 10px;
+        margin-right: 10px;
+       
+}
+    .left-column2 h2:last-of-type, .left-column h3:last-child {
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        
+    }
+.right-column {
+width: 75%;
+float: right;
+vertical-align: top;
+font-family: 'Droid Serif';
+}
+.pull-left {
+    float: left;
+    width: 47%;
+}
+.pull-right {
+    float: right;
+    width: 47%;
+}
+.pull-right ~ p {
+    clear: both;
+}
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: spaced
+layout: true
+
+
+---
+
+
+class: inverse, center, middle
+
+#  Javascript Objects
+
+### something goes here.
+
+---
+
+class: center, middle
+
+# Until now we've been using the simplest way to create objects
+
+---
+class:
+
+# Literal Notation
+
+
+<div style="margin-left:auto; margin-right:auto; position:relative;">
+    <img style="position:absolute; left:55px; top:60px;" width="700px"  src="images/Objects.png">
+</div>
+
+---
+class: inverse
+## Creating object, then add properties and methods
+
+- been using objects like dictionaries. 
+```js
+var course = {
+    title: "Digital Crafts 16 Week Bootcamp",
+    instructor: "Veronica Lino",
+    level: 1,
+    published: true,
+    views = 0
+}
+```
+
+---
+
+class: inverse
+## Creating object, then add properties and methods
+
+```js
+var course = {};
+
+course.title = "Digital Crafts 16 Week Bootcamp";
+course.instructor = "Veronica Lino";
+course.level = 1;
+course.published = true;
+course.views = 0;
+```
+---
+
+## Object Constructor Notation
+
+<div style="margin-left:auto; margin-right:auto; position:relative;">
+    <img style="position:absolute; left:55px; top:115px;" width="700px"  src="images/NewObject.png">
+</div>
+
+---
+class: inverse
+### Object Constructor
+
+```js
+
+var course = new Object();
+course.title = "Digital Crafts 16 Week Bootcamp";
+course.instructor = "Veronica Lino";
+course.level = 1;
+course.published = true;
+course.views = 0;
+
+```
+---
+class: inverse
+```js
+function Course(title, instructor, level, published, views){
+    this.title = title;
+    this.instructor = instructor;
+    this.level = level;
+    this.published = published;
+    this.views = views;  
+}
+
+```
+
+
+```js
+var Course1 = new Course("Digital Crafts 16 Week Bootcamp", "Veronica", 1, true, 0);
+var Course2 = new Course("24 Week Flex Class", "Paul", 1, true, 0);
+var Course3 = new Course("Digital Crafts 16 Week Bootcamp", "Azam", 1, true, 0);
+
+```
+
+
+---
+class: inverse
+```js
+//populating an array called CourseCatalog with course objects
+var courseCatalog = [new Course("Digital Crafts 16 Week Bootcamp", "Veronica", 1, true, 0),
+                     new Course("24 Week Flex Class", "Paul", 1, true, 0),
+                     new Course("Digital Crafts 16 Week Bootcamp", "Azam", 1, true, 0)];
+```
+
+```js
+//viewing information
+console.log(courseCatalog);  //displays all of the objects in the array
+console.log(courseCatalog[0].instructor); //logs first object's instructor = Veronica
+```
+---
+
+
+
+## Accessing Objects (dot notation and bracket notation)
+## Deleting Objects
+
+---
+class: inverse
+## Looping through an object 
+
+```js
+for (var attribute in person) {
+    var value = person[attribute];
+    console.log(`${attribute}: ${value}`);
+  }
+```
+
+---
+
+## Observations
+- Functions act as objects in Javascript. 
+- Constructors don't eliminate duplications. 
+- Javascript is dynamic 
+- Doesn't provide class implementation 
+- ES6 has class keyword, but it's still not the same 
+- In class based languages, create class then create an object 
+- In Javascript you create a constructor, you create object from it.
+- JavaScript is a porotype based language and inheritance in JavaScript is based on prototypes. 
+- Need to know how constructor works and how inheritance works in JavaScript.   
+
+---
+# Prototypes
+
+##Prototypes are the mechanism by which JavaScript objects inherit features from one another, and they work differently than inheritance mechanisms in classical object-oriented programming languages. 
+---
+
+ JavaScript is often described as a prototype-based language — each object has a prototype object, which acts as a template object that it inherits methods and properties from. An object's prototype object may also have a prototype object, which it inherits methods and properties from, and so on. This is often referred to as a prototype chain, and explains why different objects have properties and methods defined on other objects available to them.
+
+---
+# Prototype Observations
+
+- By default, every function has a property called prototype
+- This property, by default is empty, but you can add properties to it.
+- Inheritance in Javascript is not like class based languages
+- Create a constructor
+- Create objects from the constructor
+
+---
+
+
+- x1 and x2 are instnaces of X, so they are distinct objects (2 separate obejcts), so they inherit all of the properties and methods of x1
+- x is the parent class.
+- in each object you will find the method getJ
+-if you create 1000 objects from x, each object will have it's own copy of getJ (redundant)
+
+```js
+
+var X = function(j) {
+
+    this.i = 0; //setting default value
+    this.j = j;
+    this.getJ = function(){
+        return this.j;
+    };
+};
+
+
+//create instanse of x from it using keyword "new"
+
+var x1 = new x(1);
+var x2 = new x(2);
+
+console.log(x1.getJ());
+console.log(x2.getJ());
+
+```
+
+---
+# Solution = Prototypes
+
+- take the method out of the object 
+- attach the function to a prototype
+
+
+```js
+var x = function(j) {
+
+    this.i = 0; //setting default value
+    this.j = j;
+    
+};
+
+x.prototype.getJ = function(){
+    return this.j;
+};
+
+
+//create instance of x from it using keyword "new"
+
+var x1 = new x(1);
+var x2 = new x(2);
+
+console.log(x1.getJ());
+console.log(x2.getJ());
+
+```
+
+---
+
+# Observations 
+- automatically avalilable to x1 and x2
+- same results.  Only difference is x1 & x2 do not have its own method getJ
+- looks the function in the prototype chain
+- looks at parent & if can't find it, then uses parents prototype
+
+---
+# Master Object
+
+- Every object in Javascript is created from a master object (Object)
+
+```js
+var x = function(){
+    //functionality
+
+}
+
+console.dir(x);  //console.dir alows you to look at the object in detail.
+```
+
+
+---
+# Prototype Chain
+- x is created from  __proto__ : function
+- function created from __proto__:Object 
+
+---
+
+# Prototype Chain cont.
+
+- every one has a prototype property
+- x has access to all functions through a prototype chain 
+- it finds the property or method, then uses it, if not, then returns undefined.
+
+- Look at the methods in the Object 
+
+```js
+console.log(x.toString()); // prints out the function
+```
+
+
+---
+# Inheritance with class keyword
+
+```js
+class Person {
+    constructor (name) {
+      this.name = name;
+    }
+    greet(other) {
+      console.log(`Hello ${other.name}, I'm ${this.name}`);
+    }
+  }
+
+  aPerson = new Person("Veronica");
+  aPerson2 = new Person("Paul");
+
+  aPerson.greet(aPerson2);
+
+```
+---
+# Static methods
+
+- static methods are called on the class  
+- instance methods called on the instance of a class
+- used as utiilty functions.
+
+```js
+class Car{
+    static comparePrice(){
+        console.dir();
+    }
+}
+
+```
+
+
+```js
+
+Car.comparePrice();
+
+```
+---
+# Static Methods Continued
+
+```js
+class Car{
+
+    constructor (price){
+        this.price = price;
+    }
+    static addPrice(a, b){
+        return console.log(a + b);
+    }
+}
+```
+
+var car1 = new Car(100);
+var car2 = new Car(200);
+
+Car.addPrice(100, 200);
+
+
+
+
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        highlightStyle: 'zenburn',
+        highlightLanguage: 'text',
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>
