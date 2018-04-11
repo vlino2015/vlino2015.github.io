@@ -1,0 +1,40 @@
+/*Color Palette 
+
+#5BA900  - lime green
+#151515  - dark gray
+#FFFFFF  - off white
+#D5D4D5  - light gray
+#4C191B  - maroon
+
+*/
+
+/*Global Styles*/
+
+body{
+    background-color: #D5D4D5;
+    color:#FFFFFF;
+    
+}
+
+/*Header and Footer */
+
+header, footer{
+    color: #151515;
+    background-color: #151515;
+    color:#FFFFFF;
+}
+
+/*Work Experince */
+
+.work{
+    background-color: #FFFFFF;
+    color: #4C191B;
+}
+
+/* Experience */
+
+.education
+{
+    background-color: #4C191B;
+}
+

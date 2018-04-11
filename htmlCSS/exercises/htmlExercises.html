@@ -1,0 +1,223 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      HTML  CSS Exercises - DigitalCrafts
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    
+    <link href="//fonts.googleapis.com/css?family=PT+Sans+Caption|Roboto|Roboto+Mono" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+      }
+      
+      h1, h2, h3 {
+        font-family: 'PT Sans Caption';
+        font-weight: bold;
+        margin: 20px 0 20px 0;
+        padding: 0 20px;
+      }
+      
+      h2 {
+        border-top: 1px solid #ccc;
+        padding-top: 20px;
+        margin-top: 40px;
+      }
+      
+      li {
+        margin-top: .5rem;
+      }
+      
+      li li {
+        margin-top: 0.2rem;
+      }
+      
+      hr {
+        margin: 2rem 10px;
+      }
+      
+      pre {
+        background-color: #f2f2f2;
+        padding: 10px;
+        font-family: 'Roboto Mono', monospace;
+        font-size: 14px;
+        color: green;
+        margin-left: 20px;
+        margin-right: 20px;
+        white-space: pre-wrap;
+      }
+      
+      code {
+        background-color: #f2f2f2;
+        font-family: 'Roboto Mono', monospace;
+        color: green;
+      }
+      
+      p {
+        max-width: 45em;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      
+      img {
+        max-width: 860px;
+      }
+      
+      #content {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="content-md" style="display: none;">
+# Catch the Monster Game
+
+### [pygame-project.zip](https://drive.google.com/file/d/0BzQmPGSKEkNwaHJGRS1JdXFBWjg/view?usp=sharing)
+
+You will make a game in which the hero wins by catching the monster, while having to avoid the goblins. You will make use of object-oriented programming to make your life easier. You may choose to start out your code in OOP fashion or wait for the refactoring steps listed in these instructions to change to OOP.
+
+## Step 1
+
+Make a copy of `template.py` and rename it to something you like - use it as a starting point for your game. You should be able to run it and see a window with a blue background.
+
+## Step 2
+
+Load the background image `background.png` and render it to the screen within the main loop. You now should see the background displaying in the window. Adjust the size of the screen to perfectly match the size of the background image.
+
+## Step 3
+
+Load the `hero.png` image, and render it at the center of the screen.
+
+## Step 4
+
+Load the `monster.png` image, and render it somewhere on the screen, but away from the hero.
+
+## Step 5
+
+Make the monster move to the right at each iteration of the main loop. It should eventually go off the screen to the right side. *Hint: you will need to use a variable to store its position.*
+
+## Step 6
+
+Make the monster wrap around to the left edge of the screen if he goes off the right side.
+
+## Step 7
+
+Make the monster move to the left now, and make it wrap around to the right side if he goes off screen.
+
+## Step 8
+
+Make the monster move to the north now, and make it wrap around to the south side if he goes off screen.
+
+## Step 9
+
+Make the monster move to the south now, and make it wrap around to the north side if he goes off screen.
+
+## Step 10
+
+Make the monster change its direction randomly every 2 seconds or so. He will change his direction to one of north, east, south, or west.
+
+*Hint: to do this, you may either use the `time` module's `time.time()` function to calculate a 2 second time difference, or simply perform a direction change every 120 iterations through the main while loop.*
+
+## Step 11: OOP Refactoring Step
+
+Extract the monster code into a class.
+
+## Step 12
+
+Also allow the monster to go in diagnal directions: northwest, northeast, southwest, and southeast.
+
+## Step 11
+
+Make the hero move by pressing the arrow keys on the keyboard to change the direction of the hero is going.
+
+Hint: the hero will need variables for its position, and they will need to change when arrow keys are pressed.
+
+Make the hero slightly slower than the monster to make the game difficult (you can always change this).
+
+## Step 12
+
+Unlike the monster, the hero cannot wrap around the edges. Confine the hero to not be able to move past the bushes.
+
+## Step 13: OOP Refactoring Step
+
+Extract the hero code into a class.
+
+## Step 14
+
+Detect if the hero catches the monster. You have 2 options:
+
+calculate the distance between the hero and the monster using the distance formula: sqrt(sqr(x1 - x2) + sqr(y1 - y2)). If the distance is less than 32, they have collided.
+use object collision detection. Assume each of the images are 32x32 pixels. Given the positions of two characters, (ax, ay), (bx, by), if any one of the following are true, then they are not overlapping:
+
+```
+ 1. ax + 32 < bx
+ 2. bx + 32 < ax
+ 3. ay + 32 < by
+ 4. by + 32 < ay
+ 5. otherwise they collide
+```
+
+## Step 15: OOP Refactoring Step
+
+Extract common code between `Hero` and `Monster` into a shared super class.
+
+## Step 16
+
+If the hero catches the monster:
+
+Hide the monster from the display.
+Play the `win.wav` sound effect.
+Display text at the center of the screen that says 'Hit ENTER to play again!'.
+
+## Step 17
+
+Detect the ENTER key in the case the game has been won, and restart the game by:
+
+1. Bringing the monster back to life.
+2. Moving him to a random place on the screen.
+3. Restart the game.
+
+
+## Step 18
+
+Add a goblin to the world (in a random location). The Hero must avoid the goblin to avoid losing. The goblin changes directions like the monster, but moves at a slower speed than the monster and the hero (you can tweak this though).
+
+## Step 19
+
+Collision detection for the goblin: if a goblin collides with the hero:
+
+1. Hide the hero from the display
+2. Play the `lose.wav` sound effect
+3. Display text at the center of the screen that says 'You lose! Hit ENTER to play again.'
+
+## Step 20: OOP Refactoring Step
+
+Extract common code between `Goblin` and `Monster` to a shared super class.
+
+## Step 21
+
+Add 2 more goblins to the board!
+
+## Step 22
+
+Play some 8-bit background music! Load `music.wav` and have the song play on a loop.
+
+## Bonus Challenge
+
+Each time you win the game by catching the monster, you move to the next level where one more goblin is added to the game. Display the current level you are on in the top left corner.
+
+</textarea>
+    <div id="content"></div>
+    <script src="//remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var md = document.getElementById('content-md').value;
+      document.getElementById('content').innerHTML = remark.convert(md);
+    </script>
+  </body>
+</html>
