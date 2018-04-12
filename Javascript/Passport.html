@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      AWS Deployment
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  margin: 20px 0 30px 0;
+}
+h1 span.filename {
+  font-family: 'Roboto Mono', monospace;
+  color: #489963;
+  font-size: 75%;
+}
+.remark-code, .remark-inline-code {
+  font-family: 'Roboto Mono', monospace;
+}
+.remark-code {
+  font-size: 22px;
+  
+}
+.remark-slide-content {
+  font-size: 28px;
+  padding: 1em 2em 1em 2em;
+  background-color: #fdfdfd;
+}
+.spaced li {
+  margin-top: 1rem;
+}
+.spaced li li {
+  margin-top: 0.5rem;
+}
+.tight li {
+  margin-top: 0.5rem;
+}
+.tight li li {
+  margin-top: 0.2rem;
+}
+.code18 .remark-code {
+  font-size: 18px;
+}
+hr {
+  border: 0;
+  border-bottom: 3px solid #777;
+  margin: 40px 0;
+}
+.inverse {
+  background-size: 120px 50px;
+  background-position: 97% 3%;
+}
+.inverse .remark-code, .inverse .remark-inline-code {
+  color: #489963;
+}
+  
+@media only screen {
+  .inverse {
+    background-color: #272822;
+    color: #eaeaea;
+    text-shadow: 0 0 20px #333;
+  }
+  
+  .inverse h1, .inverse h2 {
+    color: #f3f3f3;
+    line-height: 1.0em;
+  }
+  
+  a, a > code {
+    color: rgb(249, 38, 114);
+    text-decoration: none;
+  }
+}
+.wrap_code pre {
+  white-space: pre-wrap;
+}
+.small_code .remark-code {
+  font-size: 20px;
+}
+.smallest_code .remark-code {
+  font-size: 18px;
+}
+.super_smallest_code .remark-code {
+  font-size: 14px;
+}
+
+.imgs{
+    /* margin-left:auto; margin-right:auto; position:relative; */
+    display:block;
+    text-align: center;
+}
+
+.leftJustify{
+    width: 100%;
+    text-align: left;
+}
+/* Two-column layout */
+.left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+}
+    .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+.left-column2 {
+        color: #edededf6;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+        background-color: #000;
+        padding: 10px;
+        margin-right: 10px;
+       
+}
+    .left-column2 h2:last-of-type, .left-column h3:last-child {
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        
+    }
+.right-column {
+width: 75%;
+float: right;
+vertical-align: top;
+font-family: 'Droid Serif';
+}
+.pull-left {
+    float: left;
+    width: 47%;
+}
+.pull-right {
+    float: right;
+    width: 47%;
+}
+.pull-right ~ p {
+    clear: both;
+}
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: spaced
+layout: true
+
+---
+
+class: inverse, center, middle
+
+#  Sessions, Passport & Sequelize
+
+### a lot of stuff, revisited. 
+
+
+---
+
+# What is a session?
+
+A session is a place to store data that you want access to across requests. Each user that visits your website has a unique session.  You can use sessions to store and access user data as they browse your application.
+
+<br>
+
+Sessions are integral to web application development because they allow the application to store state. Based on what action a user took on Page A, we can show a different Page B. Without them, applications would be stateless, and not very useful.
+---
+
+
+
+# express-session 
+
+
+Installation is done using the npm install command
+```node 
+
+$ npm install express-session
+```
+
+API 
+
+```node 
+var session = require('express-session')
+
+```
+
+[documentation](https://github.com/expressjs/session)
+---
+
+# cookie-parser 
+
+Installation 
+
+```node 
+$ npm install cookie-parser
+```
+
+API 
+
+```node 
+var express      = require('express')
+var cookieParser = require('cookie-parser')
+ 
+var app = express()
+app.use(cookieParser())
+```
+
+[documentation](https://www.npmjs.com/package/cookie-parser)
+---
+
+# Example of a simple session
+
+```node 
+
+const express = require('express');
+const session = require('express-session');
+ 
+const app = express();
+app.use(session());
+```
+---
+
+## Sessions can store their information in different ways. The popular ways to store session data is:
+
+
+- In application memory
+- In a __cookie__
+- In a memory cache
+- In a __database__
+---
+
+
+# Example using cookie
+
+
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/Sessions/Sessions1.png">
+</div> 
+
+- __cookie.maxAge__ Specifies the number (in milliseconds) to use when calculating the Expires Set-Cookie attribute
+- maxAge: 14 * 24 * 60 * 60 * 1000
+
+---
+
+## If your application has enabled sessions, you can set some data in one route handler:
+
+```node 
+app.use(session({ secret: 'this-is-a-secret-token', cookie: { maxAge: 60000 }}));
+ 
+// Access the session as req.session
+app.get('/', function(req, res, next) {
+  var sessData = req.session;
+  sessData.someAttribute = "foo";
+  res.send('Returning with some text');
+});
+
+```
+---
+
+## And read it in another route handler
+
+```node 
+app.get('/bar', function(req, res, next) {
+    var someAttribute = req.session.someAttribute;
+    res.send(`This will print the attribute I set earlier: ${someAttribute}`);
+  });
+
+```
+---
+
+
+# Example using database
+
+```node 
+var myStore = new SequelizeStore({
+    db: connection
+})
+
+
+var app = express();
+app.use(cookieParser());
+app.use(session({
+  secret: 'keyboard cat',
+  store: myStore,
+  resave: false, 
+  proxy: true 
+}));
+
+```
+---
+# pg-promise connect-pg-simple
+
+Installation
+```node 
+npm install connect-pg-simple
+```
+
+Once npm installed the module, you need to create the session table in your database. For that you can use the table.sql file provided with the module:
+
+```node 
+psql mydatabase < node_modules/connect-pg-simple/table.sql
+```
+
+[documentation](https://www.npmjs.com/package/connect-pg-simple)
+
+---
+# Sequelize sequelize-session-store
+
+Installation
+
+```node 
+npm install sequelize-session-store
+
+```
+
+- You need an Express application using the express-session middleware
+- You will also need an instance of Sequelize
+
+---
+
+# Must have Instance of Sequelize
+- If a sequelize instance is not passed in, an error will be thrown. 
+- If you do not pass it a model, one will be created and available for you to access using the SequelizeSessionStore instance.
+
+
+```node 
+ 
+CREATE TABLE express_session (
+    sid VARCHAR NOT NULL,
+    sess TEXT NOT NULL,
+    expire TIMESTAMP(6) NOT NULL,
+    PRIMARY KEY (sid)
+)
+
+```
+
+---
+class: inverse, center, middle
+# Passport
+
+[documentation](http://www.passportjs.org/docs/)
+
+---
+
+Install 
+
+```node 
+
+$ npm install passport
+```
+
+```node 
+$ npm install passport-local
+
+```
+
+---
+
+# Form 
+
+A form is placed on a web page, allowing the user to enter their credentials and log in.
+ 
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/Sessions/Session2.png">
+</div> 
+---
+# Route 
+
+The login form is submitted to the server via the POST method. Using authenticate() with the local strategy will handle the login request.
+
+```node 
+app.post('/login',
+  passport.authenticate('local', { successRedirect: '/',
+                                   failureRedirect: '/login',
+                                   failureFlash: true })
+);
+
+```
+- Setting the failureFlash option to true instructs Passport to flash an error message using the message option set by the verify callback above. This is helpful when prompting the user to try again.
+
+---
+
+
+
+---
+serialization
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/Sessions/Sessions3.png">
+</div> 
+---
+sessions
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/Sessions/Sessions4.png">
+</div> 
+
+---
+
+Local Strategy
+<div class="imgs">
+    <img width="700px"  src="https://vlino2015.github.io/Javascript/Images/Sessions/Sessions5.png">
+</div> 
+
+---
+
+When Passport authenticates a request, it parses the credentials contained in the request. It then invokes the verify callback with those credentials as arguments, in this case username and password. If the credentials are valid, the verify callback invokes done to supply Passport with the user that authenticated.
+
+```node 
+return done(null, user);
+
+```
+
+If the credentials are not valid (for example, if the password is incorrect), done should be invoked with false instead of a user to indicate an authentication failure.
+
+```node 
+return done(null, false);
+
+```
+if an exception occurred while verifying the credentials
+```node 
+return done(err);
+
+```
+
+---
+
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        highlightStyle: 'zenburn',
+        highlightLanguage: 'text',
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>
