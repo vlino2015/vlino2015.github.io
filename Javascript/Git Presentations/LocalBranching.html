@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      Local Branches
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  margin: 20px 0 30px 0;
+}
+h1 span.filename {
+  font-family: 'Roboto Mono', monospace;
+  color: #489963;
+  font-size: 75%;
+}
+.remark-code, .remark-inline-code {
+  font-family: 'Roboto Mono', monospace;
+}
+.remark-code {
+  font-size: 22px;
+  
+}
+.remark-slide-content {
+  font-size: 28px;
+  padding: 1em 2em 1em 2em;
+  background-color: #fdfdfd;
+}
+.spaced li {
+  margin-top: 1rem;
+}
+.spaced li li {
+  margin-top: 0.5rem;
+}
+.tight li {
+  margin-top: 0.5rem;
+}
+.tight li li {
+  margin-top: 0.2rem;
+}
+.code18 .remark-code {
+  font-size: 18px;
+}
+hr {
+  border: 0;
+  border-bottom: 3px solid #777;
+  margin: 40px 0;
+}
+.inverse {
+  background-size: 120px 50px;
+  background-position: 97% 3%;
+}
+.inverse .remark-code, .inverse .remark-inline-code {
+  color: #489963;
+}
+  
+@media only screen {
+  .inverse {
+    background-color: #272822;
+    color: #eaeaea;
+    text-shadow: 0 0 20px #333;
+  }
+  
+  .inverse h1, .inverse h2 {
+    color: #f3f3f3;
+    line-height: 1.0em;
+  }
+  
+  a, a > code {
+    color: rgb(249, 38, 114);
+    text-decoration: none;
+  }
+}
+.wrap_code pre {
+  white-space: pre-wrap;
+}
+.small_code .remark-code {
+  font-size: 20px;
+}
+.smallest_code .remark-code {
+  font-size: 18px;
+}
+.super_smallest_code .remark-code {
+  font-size: 14px;
+}
+/* Two-column layout */
+.left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+}
+    .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+.left-column2 {
+        color: #edededf6;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+        background-color: #000;
+        padding: 10px;
+        margin-right: 10px;
+       
+}
+    .left-column2 h2:last-of-type, .left-column h3:last-child {
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        
+    }
+.right-column {
+width: 75%;
+float: right;
+vertical-align: top;
+font-family: 'Droid Serif';
+}
+.pull-left {
+    float: left;
+    width: 47%;
+}
+.pull-right {
+    float: right;
+    width: 47%;
+}
+.pull-right ~ p {
+    clear: both;
+}
+
+.centerImage
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: spaced
+layout: true
+
+
+---
+
+
+class: inverse, center, middle
+
+#  Viewing and Creating Local Branches
+
+---
+# Git Branching
+
+Branching means you diverge from the main line of development and contine to do work without messing with that line
+
+
+-Git doesn't store data as a series of changesets or differences, but instead as a series of snapshots.
+
+---
+<div>
+    <img class="centerImage" width="500px"  src="Images/GitBranchLocal.png">
+</div>
+
+Lists all of the branches in your __local__ repository.
+
+```git
+
+$ git branch
+
+```
+
+<div>
+    <img class="centerImage" width="100%"  src="Images/BranchLocalScreenShot.png">
+</div>
+
+In this example, there is one branch named __master__.  The asterisks next to branch name indicates that you are currenctly working from this directory.
+
+---
+
+<div>
+    <img class="centerImage" width="100%"  src="Images/LocalMasterBranch.png">
+</div>
+
+<div>
+    <img class="centerImage" width="400px"  src="Images/3TreeLocalCommit.png">
+</div>
+
+
+---
+<div>
+    <img class="centerImage" width="800px"  src="Images/GitBranchNewLocal.png">
+</div>
+
+Creates a new branch
+
+
+git branch
+
+
+
+---
+<div>
+    <img class="centerImage" width="800px"  src="Images/GitCheckoutLocal.png">
+</div>
+
+
+
+---
+
+<div>
+    <img class="centerImage" width="800px"  src="Images/CheckoutBLocalBranch.png">
+</div>
+
+
+---
+
+# Switching Branches with Uncommitted Changes
+
+- working directory must be "clean" before switching to new branch
+- must commit all changes before switching
+- git will not allow you to switch without committing your changes.
+
+---
+# Comparing Branches
+
+git diff command allows you to compare branches
+
+-- order of files doesn't matter
+
+```git
+$ git diff master..(name of branch)
+```
+
+```git
+$ git diff --color-words master..(name of branch)
+```
+
+---
+# Renaming Branches
+
+- not actually moving, but renaming it.
+- names should be descriptive of the changes that you're making
+- use a ticket name
+
+```git
+$ git diff --color-words master..(name of branch)
+```
+
+---
+# Deleting Branches
+
+- can't delete the branch that you're currently on
+
+```git
+$ git branch -d (branch to delete)
+```
+
+
+Overrides warnings
+
+```git
+$ git branch -D (branch to delete)
+```
+
+---
+# Merging Code
+
+- checkout the branch that you are going to merge things into (the receiver)
+
+```git
+$ git merge (branch to merge)
+```
+
+---
+
+
+
+
+
+
+
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        highlightStyle: 'zenburn',
+        highlightLanguage: 'text',
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>
