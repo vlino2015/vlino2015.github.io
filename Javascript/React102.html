@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      AWS Deployment
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  margin: 20px 0 30px 0;
+}
+h1 span.filename {
+  font-family: 'Roboto Mono', monospace;
+  color: #489963;
+  font-size: 75%;
+}
+.remark-code, .remark-inline-code {
+  font-family: 'Roboto Mono', monospace;
+}
+.remark-code {
+  font-size: 22px;
+  
+}
+.remark-slide-content {
+  font-size: 28px;
+  padding: 1em 2em 1em 2em;
+  background-color: #fdfdfd;
+}
+.spaced li {
+  margin-top: 1rem;
+}
+.spaced li li {
+  margin-top: 0.5rem;
+}
+.tight li {
+  margin-top: 0.5rem;
+}
+.tight li li {
+  margin-top: 0.2rem;
+}
+.code18 .remark-code {
+  font-size: 18px;
+}
+hr {
+  border: 0;
+  border-bottom: 3px solid #777;
+  margin: 40px 0;
+}
+.inverse {
+  background-size: 120px 50px;
+  background-position: 97% 3%;
+}
+.inverse .remark-code, .inverse .remark-inline-code {
+  color: #489963;
+}
+  
+@media only screen {
+  .inverse {
+    background-color: #272822;
+    color: #eaeaea;
+    text-shadow: 0 0 20px #333;
+  }
+  
+  .inverse h1, .inverse h2 {
+    color: #f3f3f3;
+    line-height: 1.0em;
+  }
+  
+  a, a > code {
+    color: rgb(249, 38, 114);
+    text-decoration: none;
+  }
+}
+.wrap_code pre {
+  white-space: pre-wrap;
+}
+.small_code .remark-code {
+  font-size: 20px;
+}
+.smallest_code .remark-code {
+  font-size: 18px;
+}
+.super_smallest_code .remark-code {
+  font-size: 14px;
+}
+
+.imgs{
+    /* margin-left:auto; margin-right:auto; position:relative; */
+    display:block;
+    text-align: center;
+}
+
+.pic{
+    /* margin-left:auto; margin-right:auto; position:relative; */
+    
+    border-radius: 10px;
+}
+
+.leftJustify{
+    width: 100%;
+    text-align: left;
+}
+/* Two-column layout */
+.left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+}
+    .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+.left-column2 {
+        color: #edededf6;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+        background-color: #000;
+        padding: 10px;
+        margin-right: 10px;
+       
+}
+    .left-column2 h2:last-of-type, .left-column h3:last-child {
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        
+    }
+.right-column {
+width: 75%;
+float: right;
+vertical-align: top;
+font-family: 'Droid Serif';
+}
+.pull-left {
+    float: left;
+    width: 47%;
+}
+.pull-right {
+    float: right;
+    width: 47%;
+}
+.pull-right ~ p {
+    clear: both;
+}
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: spaced
+layout: true
+
+---
+
+class: inverse, center, middle
+
+#  React
+
+### the gritty details
+
+
+---
+
+class: center
+
+
+
+<div class="imgs">
+    <img width="700px"  src="Images/React/ReactDom.png">
+</div>
+
+<div class="imgs">
+    <img width="700px"  src="Images/React/ReactDomEx.png">
+</div>
+
+<div class="imgs">
+    <img width="700px"  src="Images/React/RootElement.png">
+</div>
+
+.leftJustify[
+
+- function takes 2 arguments: 
+    - element that is to be rendered
+    - where you want to render it
+
+]
+
+
+---
+class: center 
+## Index.js file
+
+<div class="imgs2">
+    <img width="700px"  src="Images/React/React1.png" class="pic">
+</div>
+
+- First argument of ReactDom.render can be a component
+- __registerServiceWorker()__ is a web API that helps you cache your assets and other files so that when the user is offline or on slow network, he/she can still see results on the screen
+
+---
+# React Component
+
+- Every react app has at least one component
+    - The root component named App in App.js 
+    - Extends the component class provided by React library
+- Components are the basic builing blocks of React applications
+- Controls a portion of the screen, a view - through its association JSX template
+- We define our component's application logic inside of a class 
+- The class interacts with the view through properties and methods
+
+---
+
+class: center
+# Basic React Component
+[Javascript Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+
+<div class="imgs2">
+    <img width="500px"  src="Images/React/BasicComponent.png" class="pic">
+</div>
+
+---
+
+class: center
+
+
+
+<div class="imgs">
+    <img width="500px"  src="Images/React/render.png">
+</div>
+
+.leftJustify[
+
+- Just a Javascript function that returns code that will be rendered
+- In React, implementing the __render__ method is required
+- When called, it should return a single React element
+    - This element can be either a representation of a native DOM component, such as <div /> or a composite component that you've defined yourself
+- render mehthod converts the JSX code into HTML when the component's view is rendered
+- Only one main element is returned.  Elements must be nested inside of a parent element
+
+]
+
+---
+
+
+---
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        highlightStyle: 'zenburn',
+        highlightLanguage: 'text',
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>
