@@ -171,21 +171,77 @@ layout: true
 
 class: inverse, center, middle
 
-#  React 103
+#  React
 
-
+### [Class Project Management App](https://github.com/vlino2015/ReactClassProjectMangApp)
 
 
 ---
-
-
 class: center
 
+<div class="imgs">
+    <img width="600px"  src="Images/React/map.png">
+</div>
+---
+# Props and State
 
+.pull-left[
+
+__Props__ <br><br>
+Used to pass data to components. <br>
+__{__this.__props__.propname__}__
+
+- Not mutable (can't change)
+- {this.props.rating++}
+
+]
+
+.pull-right[
+
+__State__ <br><br>
+Represents possible conditions of an application <br>
+
+__{__this.__state__.statename__}__
+- Editing/saved 
+- Logged in/ Logged out
+
+]
+
+
+---
+# State
 
 <div class="imgs">
     <img width="500px"  src="Images/React/render.png">
 </div>
+
+
+
+---
+# Data flows down 
+- Child components don't know if parent component is stateless or statefull class or function
+- Sttae is encapulated inside of its component
+- State is not accessible to any component other than its own and its children
+- A component can pass its state through props
+
+---
+
+# State Pass down info
+
+<div class="imgs">
+    <img width="500px"  src="Images/React/StatePassDown.png">
+</div>
+---
+
+class: center
+
+
+<div class="imgs">
+    <img width="700px"  src="Images/React/ClassProject.png">
+</div>
+
+
+
 
 
     </textarea>
