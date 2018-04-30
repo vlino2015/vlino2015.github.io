@@ -170,8 +170,145 @@ class: inverse, center, middle
 ### the pairing 
 
 
+---
+# Purpose
 
---- 
+- set up a React app alongside an Express backend app
+- wire up the UI to fetch some data from the backend
+
+---
+# Create the Express App
+
+Generate express app with the express-generator
+
+```bash
+npm install -g express-generator
+```
+
+Then run it to create the Express app:
+
+```bash 
+express <File Name>
+```
+example
+```bash 
+express react-backend
+```
+---
+# Update your dependencies
+
+```bash 
+cd react-backend
+```
+i.e.
+```bash 
+npm install
+```
+
+---
+```bash 
+
+var express = require('express');
+var router = express.Router();
+
+/* GET users listing. */
+router.get('/', function(req, res, next) {
+	// Comment out this line:
+  //res.send('respond with a resource');
+
+  // And insert something like this instead:
+  res.json([{
+  	id: 1,
+  	username: "samsepi0l"
+  }, {
+  	id: 2,
+  	username: "D0loresH4ze"
+  }]);
+});
+
+module.exports = router;
+
+```
+
+---
+
+# Start up the app
+
+```bash 
+PORT=3001 node bin/www
+
+```
+
+---
+# create-react-app
+
+from inside the react-backend folder, create the React app
+
+```bash 
+
+create-react-app client
+```
+---
+# Configure the Proxy
+
+Inside the React app’s folder (client), open up package.json (make sure it’s not Express’ package.json – it should have things like “react” and “react-scripts” in it). Under the “scripts” section, add the “proxy” line like this
+
+```node 
+
+"scripts": {
+  "start": "react-scripts start",
+  "build": "react-scripts build",
+  "test": "react-scripts test --env=jsdom",
+  "eject": "react-scripts eject"
+},
+"proxy": "http://localhost:3001"
+```
+
+The port (3001) in the “proxy” line must match the port that your Express server is running on.
+---
+# The way a proxy works
+
+The way this works is, any time your React app makes a request to something that’s not a static asset (not an image or CSS or index.html, basically), it will forward the request to the server specified in "proxy".
+
+---
+# Fetch the Data from React
+
+At this point 2 servers are running: Express (on port 3001) and Create React App’s Webpack dev server (on port 3000).
+- Let’s make a call to the /users endpoint and make sure the whole pipeline is working.
+- Open up client/src/App.js 
+---
+
+
+```node 
+
+import React, { Component } from 'react';
+import './App.css';
+
+class App extends Component {
+  state = {users: []}
+
+  componentDidMount() {
+    fetch('/users')
+      .then(res => res.json())
+      .then(users => this.setState({ users }));
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Users</h1>
+        {this.state.users.map(user =>
+          <div key={user.id}>{user.username}</div>
+        )}
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+
 
 
 
