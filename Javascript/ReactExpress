@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>
-      AWS Deployment
+      React 101
     </title>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="/static/favicon.ico">
@@ -101,12 +101,6 @@ hr {
     text-align: center;
 }
 
-.pic{
-    /* margin-left:auto; margin-right:auto; position:relative; */
-    
-    border-radius: 10px;
-}
-
 .leftJustify{
     width: 100%;
     text-align: left;
@@ -171,70 +165,13 @@ layout: true
 
 class: inverse, center, middle
 
-#  React
+#  Combining React and Node
 
-### [Class Project Management App](https://github.com/vlino2015/ReactClassProjectMangApp)
-
-
----
-class: center
-
-<div class="imgs">
-    <img width="800px"  src="Images/React/map.png">
-</div>
----
-# Props and State
-
-.pull-left[
-
-__Props__ <br><br>
-Used to pass data to components. <br>
-__{__this.__props__.propname__}__
-
-- Not mutable (can't change)
-- {this.props.rating++}
-
-]
-
-.pull-right[
-
-__State__ <br><br>
-Represents possible conditions of an application <br>
-
-__{__this.__state__.statename__}__
-- Editing/saved 
-- Logged in/ Logged out
-
-]
+### the pairing
 
 
 
-
-
-
----
-# Data flows down 
-- Child components don't know if parent component is stateless or statefull class or function
-- Sttae is encapulated inside of its component
-- State is not accessible to any component other than its own and its children
-- A component can pass its state through props
-
----
-
-# State Pass down info
-
-<div class="imgs">
-    <img width="1100px"  src="Images/React/StatePassDown.png">
-</div>
----
-
-class: center
-
-
-<div class="imgs">
-    <img width="750px"  src="Images/React/ClassProject.png">
-</div>
-
+--- 
 
 
 
