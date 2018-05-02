@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      AWS Deployment
+    </title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/static/favicon.ico">
+    <base target="_blank">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto:400,700);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif);
+body {
+  font-family: 'Roboto', sans-serif;
+  
+}
+h1, h2, h3 {
+  font-family: 'Yanone Kaffeesatz';
+  font-weight: normal;
+  margin: 20px 0 30px 0;
+}
+h1 span.filename {
+  font-family: 'Roboto Mono', monospace;
+  color: #489963;
+  font-size: 75%;
+}
+.remark-code, .remark-inline-code {
+  font-family: 'Roboto Mono', monospace;
+}
+.remark-code {
+  font-size: 22px;
+  
+}
+.remark-slide-content {
+  font-size: 28px;
+  padding: 1em 2em 1em 2em;
+  background-color: #fdfdfd;
+}
+.spaced li {
+  margin-top: 1rem;
+}
+.spaced li li {
+  margin-top: 0.5rem;
+}
+.tight li {
+  margin-top: 0.5rem;
+}
+.tight li li {
+  margin-top: 0.2rem;
+}
+.code18 .remark-code {
+  font-size: 18px;
+}
+hr {
+  border: 0;
+  border-bottom: 3px solid #777;
+  margin: 40px 0;
+}
+.inverse {
+  background-size: 120px 50px;
+  background-position: 97% 3%;
+}
+.inverse .remark-code, .inverse .remark-inline-code {
+  color: #489963;
+}
+  
+@media only screen {
+  .inverse {
+    background-color: #272822;
+    color: #eaeaea;
+    text-shadow: 0 0 20px #333;
+  }
+  
+  .inverse h1, .inverse h2 {
+    color: #f3f3f3;
+    line-height: 1.0em;
+  }
+  
+  a, a > code {
+    color: rgb(249, 38, 114);
+    text-decoration: none;
+  }
+}
+.wrap_code pre {
+  white-space: pre-wrap;
+}
+.small_code .remark-code {
+  font-size: 20px;
+}
+.smallest_code .remark-code {
+  font-size: 18px;
+}
+.super_smallest_code .remark-code {
+  font-size: 14px;
+}
+
+.imgs{
+    /* margin-left:auto; margin-right:auto; position:relative; */
+    display:block;
+    text-align: center;
+}
+
+.pic{
+    /* margin-left:auto; margin-right:auto; position:relative; */
+    
+    border-radius: 10px;
+}
+
+.leftJustify{
+    width: 100%;
+    text-align: left;
+}
+/* Two-column layout */
+.left-column {
+        color: #777;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+}
+    .left-column h2:last-of-type, .left-column h3:last-child {
+        color: #000;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+    }
+.left-column2 {
+        color: #edededf6;
+        width: 20%;
+        height: 92%;
+        float: left;
+        font-family: 'Droid Serif';
+        background-color: #000;
+        padding: 10px;
+        margin-right: 10px;
+       
+}
+    .left-column2 h2:last-of-type, .left-column h3:last-child {
+        color: white;
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        
+    }
+.right-column {
+width: 75%;
+float: right;
+vertical-align: top;
+font-family: 'Droid Serif';
+}
+.pull-left {
+    float: left;
+    width: 47%;
+}
+.pull-right {
+    float: right;
+    width: 47%;
+}
+.pull-right ~ p {
+    clear: both;
+}
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: spaced
+layout: true
+
+---
+
+class: inverse, center, middle
+
+#  Redux
+### store, action, reducer
+### [State Management](https://redux.js.org/introduction)
+
+---
+
+# Create Folders
+
+Inside of the src folder of your create-react-app
+
+- actions 
+- components 
+- reducers
+
+create file inside store.js inside of src folder
+
+---
+
+# Actions
+
+__Actions__ are payloads of information that send data from your application to your store.
+<br>
+
+<div class="imgs">
+    <img width="800px" class="pic"  src="Images/Redux2/actionDocumentation.png">
+</div>
+
+- [Actions](https://redux.js.org/basics/actions) are plain JavaScript objects. 
+- Actions must have a type property that indicates the type of action being performed. 
+- Types should typically be defined as string constants. 
+
+
+---
+# Actions
+.pull-left[
+
+html file
+<div class="imgs">
+    <img width="400px" class="pic"  src="Images/Redux2/actionPerson.png">
+</div>
+]
+
+.pull-right[
+cart app
+<div class="imgs">
+    <img width="400px" class="pic"  src="Images/Redux2/actionCart.png">
+</div>
+]
+
+---
+# Reducers
+
+Reducers specify how the application's state changes in response to actions sent to the store. Remember that actions only describe what happened, but don't describe how the application's state changes.
+
+- [Reducers](https://redux.js.org/basics/reducers)
+
+---
+# Reducers
+
+.pull-left[
+html file
+<div class="imgs">
+    <img width="400px" class="pic"  src="Images/Redux2/reducePerson.png">
+</div>
+]
+
+.pull-right[
+cart app - src/reducers/cart.js
+<div class="imgs">
+    <img width="400px" class="pic"  src="Images/Redux2/reduceCart.png">
+</div>
+]
+---
+# Root Reducer
+
+src/reducers/index.js
+<div class="imgs">
+    <img width="800px" class="pic"  src="Images/Redux2/rootReduc.png">
+</div>
+---
+# Store
+
+<div class="imgs">
+    <img width="800px" class="pic"  src="Images/Redux2/storeDoc2.png">
+</div>
+
+- [Store](https://redux.js.org/basics/store)
+- Holds application state;
+- Allows access to state via getState();
+- Allows state to be updated via dispatch(action);
+- Registers listeners via subscribe(listener);
+
+---
+# Store
+
+.pull-left[
+html file
+<div class="imgs">
+    <img width="400px" class="pic"  src="Images/Redux2/storePerson.png">
+</div>
+]
+
+.pull-right[
+cart app - src/reducers/cart.js
+<div class="imgs">
+    <img width="400px" class="pic"  src="Images/Redux2/storeCart.png">
+</div>
+]
+---
+
+# Dispatch
+
+```redux
+
+store.dispatch(action)
+
+```
+- Allows state to be updated
+- [Dispatch]()
+
+
+
+---
+# Dispatch 
+
+.pull-left[
+html file
+<div class="imgs">
+    <img width="400px" class="pic"  src="Images/Redux2/dispatchPerson.png">
+</div>
+]
+
+.pull-right[
+cart app - src/components/cart.js
+<div class="imgs">
+    <img width="400px" class="pic"  src="Images/Redux2/dispatchCart.png">
+</div>
+]
+---
+
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        highlightStyle: 'zenburn',
+        highlightLanguage: 'text',
+        highlightLines: true
+      });
+    </script>
+  </body>
+</html>
