@@ -184,6 +184,10 @@ p.bigStuff {
   letter-spacing: -3px;
 }
 
+.smallFont{
+    font-size: 15px;
+}
+
 span.red { 
   color:red;
   font-weight:bold;
@@ -228,105 +232,185 @@ layout: true
 
 class: inverse, center, middle
 
-#  Combining Redux with React
-### let's get it on!
-### [State Management](https://redux.js.org/introduction)
+# Connect
+### [Reference Project](https://github.com/vlino2015/ReduxClassProject2)
+### [Redux](https://redux.js.org/introduction)
 
 ---
+class: center
+# Big picture 
 
-# Create Folders
+<div class="imgs">
+        <img width="600px" class="pic"  src="Images/Redux2/Redux/BigPicture.png">
+</div>
 
-
-Inside of the src folder of your create-react-app
-
-- actions 
-- components 
-- reducers
-
-create file inside __store.js__ inside of src folder
 ---
-# Overview
+Index.js
+```react
 
-```redux
-productNameChangeHandler = (event) =>{
-  this.setState({productName: event.target.value})
-}
-
-productPriceChangeHandler = (event) => {
-this.setState({productPrice: event.target.value})
-}
+var store = createStore(cartReducer);
+   
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.querySelector("#root")
+);
+```
+App.js
+```react
+var connectedComponent = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Cart);
+ 
+export default connectedComponent;
 ```
 ---
-# Actions
 
-<div class="imgs">
-        <img width="800px" class="pic"  src="Images/Redux2/actionCart.png">
-</div>
----
-# Reducers
+<p class="bigStuff" style=" font-size: 35px;">
+        mapStateToProps = ( 
+    <span class="red" style="font-size: 35px">state</span>
+        ) => {
+            <span class="red" style="font-size: 35px"><br>return{<br>
+            <span class="blue" style="font-size: 35px">&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                key: state</span>    
+            <br>}</span> 
+        }
+</p>
 
-<div class="imgs">
-        <img width="800px" class="pic"  src="Images/Redux2/redux-reducer.png">
-</div>
----
-# Reducers
-<div class="imgs">
-        <img width="800px" class="pic"  src="Images/Redux2/reduceCart.png">
-</div>
-
-
----
-# Root Reducers
-<div class="imgs">
-        <img width="800px" class="pic"  src="Images/Redux2/Redux/rootReduc.png">
-</div>
-
-[combineReducers](https://redux.js.org/recipes/structuring-reducers/using-combinereducers)
----
-# Store
-
-<div class="imgs">
-        <img width="800px" class="pic"  src="Images/Redux2/storeCart.png">
-</div>
----
-# Index.js
-
-<div class="imgs">
-        <img width="800px" class="pic"  src="Images/Redux2/Redux/index.png">
-</div>
----
-# Cart Component
-
-<div class="imgs">
-        <img width="800px" class="pic"  src="Images/Redux2/Redux/cart.png">
-</div>
----
-# Cart Component
-
-<div class="imgs">
-        <img width="800px" class="pic"  src="Images/Redux2/Redux/cartFull.png">
-</div>
----
-# Maps
-
-<div class="imgs">
-        <img width="800px" class="pic"  src="Images/Redux2/Redux/cartMapsImports.png">
-</div>
+function <mark>mapStateToProps</mark> takes the Redux store's state (global state), and returns it to the component as a prop
 ---
 
+class: center
 
-# Shelf Component
+<p class="bigStuff" style="text-align: center; font-size: 35px;">
+        mapStateToProps = ( 
+    <span class="red" style="font-size: 35px">state</span>
+        ) => {
+            <span class="red" style="font-size: 35px">return{
+            <span class="blue" style="font-size: 35px">key: state</span>    
+            }</span> 
+        }
+</p>
 
-<div class="imgs">
-        <img width="800px" class="pic"  src="Images/Redux2/Redux/shelf.png">
-</div>
+.leftJustify[
+```react
+
+function mapStateToProps(state) {
+    return {
+      totalCost: state.totalCost,    
+      productCart: state.productCart
+    }
+  }
+```
+]
+
 ---
 
-# Shelf Component
+<p class="bigStuff">
+    {
+        <span class="red" >this.</span>
+        <span class="purple" >props</span>
+        <span class="red" >.</span>
+        <span class="blue" >totalCost</span>
+    }
+</p>
 
+Inside of component cart.js
+```react
+<tbody>
+        {this.props.productCart.map(productData => (
+            <tr key={productData.productName}>                        
+                <td>{productData.productName}</td>
+                <td>{productData.productPrice}</td>
+                <td onClick={() => 
+                    this.props.onDeleteProduct(productData)}>Remove</td>                         
+            </tr>                   
+        ))}
+    </tbody> 
+</Table>              
+<span>Total Amount: {this.props.totalCost}</span>  
+```
+
+---
+
+
+
+<p class="bigStuff" style="font-size: 35px;">
+        mapDispatchToProps = (
+            <span class="red" style="font-size: 35px">dispatch</span>
+            ) => {<br>
+                <span class="red" style="font-size: 35px">
+                    return<br>
+                    {<br>
+                <span class="blue" style="font-size: 35px">
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                    key: function</span>    
+                <br>}</span> 
+            }
+    
+</p>
+
+- accepts the <mark>dispatch()</mark> from store as its only argument
+- function is available to component as a property
+
+---
+
+class: center
+
+<p class="bigStuff" style="text-align: center; font-size: 35px;">
+        mapDispatchToProps = (
+            <span class="red" style="font-size: 35px">dispatch</span>
+            ) => {
+                <span class="red" style="font-size: 35px">return{
+                <span class="blue" style="font-size: 35px">key: function</span>    
+                }</span> 
+            }
+    
+</p>
+
+.leftJustify[
+```react
+
+function mapDispatchToProps(dispatch) {
+    return {
+      onAddProduct: (productName, productPrice) => dispatch({ 
+          type: "addProduct", 
+          productData: {
+              productName: productName, 
+              productPrice: productPrice
+          }}),
+      onDeleteProduct: (productData) => dispatch({ 
+          type: "deleteProduct", 
+          productData: productData 
+      })
+    }
+  }
+```
+]
+
+
+
+---
+mapDispatchToProps
 <div class="imgs">
-        <img width="800px" class="pic"  src="Images/Redux2/Redux/shelfRender.png">
+        <img width="700px" class="pic"  src="Images/Redux2/Redux/exampleMap.png">
 </div>
+Cart.js
+<div class="imgs">
+        <img width="700px" class="pic"  src="Images/Redux2/Redux/exampleCart.png">
+</div>
+AddProduct.js
+<div class="imgs">
+        <img width="700px" class="pic"  src="Images/Redux2/Redux/exampleProduct.png">
+</div>
+
+---
+
+
 
 
     </textarea>
